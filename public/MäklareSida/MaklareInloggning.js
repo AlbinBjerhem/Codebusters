@@ -57,3 +57,8 @@ document.body.appendChild(sectionLogin);
 
 const sectionLoggedIn = document.createElement("section");
 sectionLoggedIn.id = "sectionEstateAgent";
+const sectionLoggedInh2 = document.createElement("h2");
+sectionLoggedInh2.innerText = "hej"
+sectionLoggedIn.appendChild(sectionLoggedInh2);
+document.getElementById("sectionEstateAgent").style.display = "contents";
+document.body.appendChild(sectionLoggedIn);
