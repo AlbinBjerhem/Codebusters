@@ -3,8 +3,19 @@
 const tempUsers = [
   {
     username: "admin",
-    password: "admin"
+    password: "admin",
+    loggedIn: false
   }
+]
+
+const tempHousesForSale = [
+  {
+
+  }
+]
+
+const tempHousesSuggested = [
+  
 ]
 
 // Login Sida
@@ -44,3 +55,5 @@ document.body.appendChild(sectionLogin);
 
 // In-Loggad Sida
 
+const sectionLoggedIn = document.createElement("section");
+sectionLoggedIn.id = "sectionEstateAgent";
