@@ -7,6 +7,8 @@ const tempUsers = [
   }
 ]
 
+// Login Sida
+
 const sectionLogin = document.createElement("section");
 sectionLogin.id = "loginEstateAgent";
 const sectionloginH2 = document.createElement("h2");
@@ -38,3 +40,7 @@ loginForm.appendChild(loginPasswordInput);
 loginForm.appendChild(loginInputSubmit);
 sectionLogin.appendChild(loginForm);
 document.body.appendChild(sectionLogin);
+
+
+// In-Loggad Sida
+
