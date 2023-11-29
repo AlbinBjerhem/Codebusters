@@ -42,7 +42,7 @@ loginPasswordInput.id = "passwordInput";
 loginPasswordInput.required = true;
 const loginInputSubmit = document.createElement("input");
 loginInputSubmit.type = "submit";
-loginInputSubmit.value = "Submit";
+loginInputSubmit.value = "Log In";
 
 loginForm.appendChild(loginFormUsernameLabel);
 loginForm.appendChild(loginUsernameInput);
@@ -60,13 +60,20 @@ sectionLoggedIn.id = "sectionEstateAgent";
 const sectionLoggedInh2 = document.createElement("h2");
 sectionLoggedInh2.innerText = "hej"
 sectionLoggedIn.appendChild(sectionLoggedInh2);
-document.getElementById("sectionEstateAgent").style.display = "contents";
 document.body.appendChild(sectionLoggedIn);
-
+sectionLoggedIn.style.display = "none";
 
 
 //Login Function
 function userLogin(event){
   event.preventDefault();
-  
+  const inputUsername = document.getElementById("usernameInput").value;
+  const inputPassword = document.getElementById("passwordInput").value;
+  const loginCorrect = tempUsers.some(tempUsers =>
+    tempUsers.password == inputPassword && tempUsers.username == inputUsername)
+  if (loginCorrect == true) {
+    sectionLoggedIn.style.display = "block";
+    sectionLogin.style.display = "none";
+  }
+
 }
