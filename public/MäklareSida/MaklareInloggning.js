@@ -67,8 +67,9 @@ logOut.type = "submit";
 logOut.value = "Log Out";
 
 //arbeta med sälj lägenheter här
+
 // två tabeller en med hem tagna av mäklare en utan?
-// skulle en tablle fungera?
+// skulle en tabell fungera?
 
 logOutForm.appendChild(logOut)
 sectionLoggedIn.appendChild(sectionLoggedInh2);
