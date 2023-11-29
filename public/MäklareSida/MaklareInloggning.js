@@ -9,13 +9,14 @@ const tempUsers = [
 ]
 
 const tempHousesForSale = [
-  {
 
-  }
 ]
 
 const tempHousesSuggested = [
-  
+  {
+    Address: "23 Happylane",
+    Agent: "",
+  }
 ]
 
 // Login Sida
@@ -64,6 +65,11 @@ logOutForm.id = "logOut"
 const logOut = document.createElement("input");
 logOut.type = "submit";
 logOut.value = "Log Out";
+
+//arbeta med sälj lägenheter här
+// två tabeller en med hem tagna av mäklare en utan?
+// skulle en tablle fungera?
+
 logOutForm.appendChild(logOut)
 sectionLoggedIn.appendChild(sectionLoggedInh2);
 sectionLoggedIn.appendChild(logOutForm);
@@ -71,6 +77,8 @@ document.body.appendChild(sectionLoggedIn);
 
 document.querySelector("#logOut").addEventListener("submit",userLogOut)
 sectionLoggedIn.style.display = "none";
+
+
 
 //Login Function
 function userLogin(event){
@@ -84,7 +92,7 @@ function userLogin(event){
     sectionLogin.style.display = "none";
   }
 }
-
+// LogOut Function
 function userLogOut(event) {
   event.preventDefault();
   sectionLoggedIn.style.display = "none";
