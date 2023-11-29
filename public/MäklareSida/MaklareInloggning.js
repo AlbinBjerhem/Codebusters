@@ -52,7 +52,7 @@ loginForm.appendChild(loginInputSubmit);
 sectionLogin.appendChild(loginForm);
 document.body.appendChild(sectionLogin);
 
-
+document.querySelector("#loginForm").addEventListener("submit",userLogin)
 // In-Loggad Sida
 
 const sectionLoggedIn = document.createElement("section");
@@ -62,3 +62,11 @@ sectionLoggedInh2.innerText = "hej"
 sectionLoggedIn.appendChild(sectionLoggedInh2);
 document.getElementById("sectionEstateAgent").style.display = "contents";
 document.body.appendChild(sectionLoggedIn);
+
+
+
+//Login Function
+function userLogin(event){
+  event.preventDefault();
+  
+}
