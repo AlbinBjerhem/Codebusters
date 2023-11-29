@@ -59,10 +59,18 @@ const sectionLoggedIn = document.createElement("section");
 sectionLoggedIn.id = "sectionEstateAgent";
 const sectionLoggedInh2 = document.createElement("h2");
 sectionLoggedInh2.innerText = "hej"
+const logOutForm = document.createElement("form")
+logOutForm.id = "logOut"
+const logOut = document.createElement("input");
+logOut.type = "submit";
+logOut.value = "Log Out";
+logOutForm.appendChild(logOut)
 sectionLoggedIn.appendChild(sectionLoggedInh2);
+sectionLoggedIn.appendChild(logOutForm);
 document.body.appendChild(sectionLoggedIn);
-sectionLoggedIn.style.display = "none";
 
+document.querySelector("#logOut").addEventListener("submit",userLogOut)
+sectionLoggedIn.style.display = "none";
 
 //Login Function
 function userLogin(event){
@@ -75,5 +83,10 @@ function userLogin(event){
     sectionLoggedIn.style.display = "block";
     sectionLogin.style.display = "none";
   }
+}
 
+function userLogOut(event) {
+  event.preventDefault();
+  sectionLoggedIn.style.display = "none";
+  sectionLogin.style.display = "block";
 }
