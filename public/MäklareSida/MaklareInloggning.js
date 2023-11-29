@@ -20,7 +20,6 @@ const tempHousesSuggested = [
 ]
 
 // Login Sida
-
 const sectionLogin = document.createElement("section");
 sectionLogin.id = "loginEstateAgent";
 const sectionloginH2 = document.createElement("h2");
@@ -53,9 +52,9 @@ loginForm.appendChild(loginInputSubmit);
 sectionLogin.appendChild(loginForm);
 document.body.appendChild(sectionLogin);
 
-document.querySelector("#loginForm").addEventListener("submit",userLogin)
-// In-Loggad Sida
+document.querySelector("#loginForm").addEventListener("submit", userLogin)
 
+// In-Loggad Sida
 const sectionLoggedIn = document.createElement("section");
 sectionLoggedIn.id = "sectionEstateAgent";
 const sectionLoggedInh2 = document.createElement("h2");
@@ -93,6 +92,7 @@ function userLogin(event){
     sectionLogin.style.display = "none";
   }
 }
+
 // LogOut Function
 function userLogOut(event) {
   event.preventDefault();
