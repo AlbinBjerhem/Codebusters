@@ -138,6 +138,7 @@ tempHousesSuggested.forEach(house => {
   option.value = house.Address;
   option.textContent = toString(house.Adress);
   suggestedSelector.appendChild(option)
+  // något pajar här
 })
 const acceptSuggestion = document.createElement("input")
 acceptSuggestion.type = "submit";
@@ -181,7 +182,7 @@ function acceptSuggestedHouse(event) {
   event.preventDefault();
   const tempSuggestion = suggestedSelector.options[suggestedSelector.selectedIndex].value;
   const claimedProperty = findPropety(tempSuggestion);
-  claimedProperty.Agent = currentUser;
+  claimedProperty.Agent = currentUser; // något pajar här
   tempHousesForSale.push(claimedProperty);
   tempHousesSuggested.splice(suggestedSelector.selectedIndex, 1)
   console.log("did something")
