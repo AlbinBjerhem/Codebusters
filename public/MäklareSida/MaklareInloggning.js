@@ -183,6 +183,7 @@ function acceptSuggestedHouse(event) {
   const claimedProperty = findPropety(tempSuggestion);
   claimedProperty.Agent = currentUser;
   tempHousesForSale.push(claimedProperty);
+  tempHousesSuggested.splice(suggestedSelector.selectedIndex,1)
 }
 
 function findPropety(searchAdress) {
