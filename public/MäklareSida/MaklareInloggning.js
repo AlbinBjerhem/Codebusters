@@ -22,6 +22,7 @@ const tempHousesSuggested = [
   }
 ]
 
+let currentUser = "";
 // Login Sida
 const sectionLogin = document.createElement("section");
 sectionLogin.id = "loginEstateAgent";
@@ -77,13 +78,27 @@ const uPThAdress = document.createElement("th");
 const uPThInfo = document.createElement("th"); // Knapp för att få ut mer info?
 
 uPThAdress.innerText = "Property Adress"
-uPThInfo.innerText = "Knapp för Info"
+uPThInfo.innerText = "More Info"
 
 uPTRowHead.appendChild(uPThAdress);
 uPTRowHead.appendChild(uPThInfo);
 uPTHead.appendChild(uPTRowHead);
 unclaimedPropertiesTable.appendChild(uPTHead);
 unclaimedPropertiesTable.appendChild(uPTBody);
+
+for (let suggested of tempHousesSuggested) {
+  const suggestedRow = document.createElement("tr");
+  const suggestedAdress = document.createElement("td");
+  const suggestedInfo = document.createElement("td");
+
+  suggestedAdress.innerText = suggested.Address;
+  suggestedInfo.innerText = "placeholder";
+
+  suggestedRow.appendChild(suggestedAdress);
+  suggestedRow.appendChild(suggestedInfo);
+  uPTBody.appendChild(suggestedRow);
+
+}
 
 //arbeta med sälj lägenheter/object här
 const sellPropertiesTable = document.createElement("table");
@@ -115,10 +130,29 @@ for (let house of tempHousesForSale) {
   sPTBody.appendChild(houseRow);
 }
 // två tabeller en med hem tagna av mäklare en utan?
-// skulle en tabell fungera?
+const suggestedSelectorForm = document.createElement("form");
+const suggestedSelector = document.createElement("select");
+suggestedSelector.id = "selectorSuggest"
+tempHousesSuggested.forEach(house => {
+  const option = document.createElement("option");
+  option.value = house.Address;
+  option.textContent = toString(house.Adress);
+  suggestedSelector.appendChild(option)
+})
+const acceptSuggestion = document.createElement("input")
+acceptSuggestion.type = "submit";
+acceptSuggestion.id = "acceptButton";
+acceptSuggestion.value = "Accept Suggestion"
+
+suggestedSelectorForm.appendChild(suggestedSelector);
+suggestedSelectorForm.appendChild(acceptSuggestion);
+
+suggestedSelectorForm.addEventListener("submit", acceptSuggestedHouse)
 
 logOutForm.appendChild(logOut)
 sectionLoggedIn.appendChild(sectionLoggedInh2);
+sectionLoggedIn.appendChild(unclaimedPropertiesTable);
+sectionLoggedIn.appendChild(suggestedSelectorForm);
 sectionLoggedIn.appendChild(sellPropertiesTable);
 sectionLoggedIn.appendChild(logOutForm);
 document.body.appendChild(sectionLoggedIn);
@@ -138,6 +172,24 @@ function userLogin(event){
   if (loginCorrect == true) {
     sectionLoggedIn.style.display = "block";
     sectionLogin.style.display = "none";
+    currentUser = inputUsername;
+  }
+}
+
+// accept Suggestion
+function acceptSuggestedHouse(event) {
+  event.preventDefault();
+  const tempSuggestion = suggestedSelector.options[suggestedSelector.selectedIndex].value;
+  const claimedProperty = findPropety(tempSuggestion);
+  claimedProperty.Agent = currentUser;
+  tempHousesForSale.push(claimedProperty);
+}
+
+function findPropety(searchAdress) {
+  for (let property of tempHousesSuggested) {
+    if (property.Address === searchAdress) {
+      return property;
+    }
   }
 }
 
@@ -146,4 +198,5 @@ function userLogOut(event) {
   event.preventDefault();
   sectionLoggedIn.style.display = "none";
   sectionLogin.style.display = "block";
+  currentUser = "";
 }
