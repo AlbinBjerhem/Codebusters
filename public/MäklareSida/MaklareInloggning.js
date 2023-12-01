@@ -169,11 +169,13 @@ function userLogin(event){
   const inputPassword = document.getElementById("passwordInput").value;
   const loginCorrect = tempUsers.some(tempUsers =>
     tempUsers.password == inputPassword && tempUsers.username == inputUsername)
+  //Kod för att visa och dölja
   if (loginCorrect == true) {
     sectionLoggedIn.style.display = "block";
     sectionLogin.style.display = "none";
     currentUser = inputUsername;
   }
+  //Kod för att visa och dölja
 }
 
 // accept Suggestion
@@ -198,8 +200,9 @@ function findPropety(searchAdress) {
 // LogOut Function
 function userLogOut(event) {
   event.preventDefault();
+  //Kod för att visa och dölja
   sectionLoggedIn.style.display = "none";
   sectionLogin.style.display = "block";
   currentUser = "";
-
+  //Kod för att visa och dölja
 }
