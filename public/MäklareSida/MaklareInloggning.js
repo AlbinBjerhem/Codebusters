@@ -136,7 +136,7 @@ suggestedSelector.id = "selectorSuggest"
 tempHousesSuggested.forEach(house => {
   const option = document.createElement("option");
   option.value = house.Address;
-  option.textContent = toString(house.Adress);
+  option.textContent = house.Address;
   suggestedSelector.appendChild(option)
   // något pajar här
 })
@@ -202,4 +202,5 @@ function userLogOut(event) {
   sectionLoggedIn.style.display = "none";
   sectionLogin.style.display = "block";
   currentUser = "";
+
 }
