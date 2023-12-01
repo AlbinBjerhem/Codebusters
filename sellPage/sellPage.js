@@ -1,11 +1,10 @@
-
 function selectOption(category) {
   var dropdown = document.getElementById(category);
   var selectedOption = dropdown.options[dropdown.selectedIndex].value;
   console.log(category + ": " + selectedOption);
 }
 
-function createDropdown(labelText, id) {
+function createDropdown(labelText, id, options) {
   var container = document.createElement("div");
   var label = document.createElement("label");
   label.textContent = labelText;
@@ -17,7 +16,6 @@ function createDropdown(labelText, id) {
     selectOption(id);
   };
 
-  var options = ["Ja", "Nej"];
   for (var i = 0; i < options.length; i++) {
     var option = document.createElement("option");
     option.value = options[i];
@@ -26,14 +24,19 @@ function createDropdown(labelText, id) {
   }
 
   container.appendChild(select);
-  document.body.appendChild(container);
-  document.body.appendChild(document.createElement("br"));
+  document.getElementById("myApp").appendChild(container);
+  document.getElementById("myApp").appendChild(document.createElement("br"));
 }
 
+fetch('db.json')
+  .then(response => response.json())
+  .then(data => {
+    createDropdown("Hiss:", "hissOptions", data.hissOptions);
+    createDropdown("Parkering:", "parkeringOptions", data.parkeringOptions);
+    createDropdown("Innergård:", "innergardOptions", data.innergardOptions);
+    createDropdown("Förråd:", "forradOptions", data.forradOptions);
+    createDropdown("Vind:", "vindOptions", data.vindOptions);
+  })
+  .catch(error => console.error('Error fetching options:', error));
 
-createDropdown("Hiss:", "hissOptions");
-createDropdown("Parkering:", "parkeringOptions");
-createDropdown("Innergård:", "innergardOptions");
-createDropdown("Förråd:", "forradOptions");
-createDropdown("Vind:", "vindOptions");
 
