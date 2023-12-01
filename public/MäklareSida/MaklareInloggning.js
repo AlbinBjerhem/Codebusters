@@ -138,7 +138,6 @@ tempHousesSuggested.forEach(house => {
   option.value = house.Address;
   option.textContent = house.Address;
   suggestedSelector.appendChild(option)
-  // något pajar här
 })
 const acceptSuggestion = document.createElement("input")
 acceptSuggestion.type = "submit";
