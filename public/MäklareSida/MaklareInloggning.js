@@ -86,6 +86,7 @@ uPTHead.appendChild(uPTRowHead);
 unclaimedPropertiesTable.appendChild(uPTHead);
 unclaimedPropertiesTable.appendChild(uPTBody);
 
+// Föreslagna Objekt
 for (let suggested of tempHousesSuggested) {
   const suggestedRow = document.createElement("tr");
   const suggestedAdress = document.createElement("td");
@@ -117,6 +118,7 @@ sPTHead.appendChild(sPTRowHead);
 sellPropertiesTable.appendChild(sPTHead);
 sellPropertiesTable.appendChild(sPTBody);
 
+//Objekt som Säljs
 for (let house of tempHousesForSale) {
   const houseRow = document.createElement("tr");
   const houseAdress = document.createElement("td");
@@ -129,7 +131,7 @@ for (let house of tempHousesForSale) {
   houseRow.appendChild(houseAgent);
   sPTBody.appendChild(houseRow);
 }
-// två tabeller en med hem tagna av mäklare en utan?
+
 const suggestedSelectorForm = document.createElement("form");
 const suggestedSelector = document.createElement("select");
 suggestedSelector.id = "selectorSuggest"
@@ -160,7 +162,9 @@ document.body.appendChild(sectionLoggedIn);
 document.querySelector("#logOut").addEventListener("submit",userLogOut)
 sectionLoggedIn.style.display = "none";
 
-
+function UpdateCreateList() {
+  
+}
 
 //Login Function
 function userLogin(event){
@@ -196,6 +200,7 @@ function findPropety(searchAdress) {
     }
   }
 }
+
 
 // LogOut Function
 function userLogOut(event) {
