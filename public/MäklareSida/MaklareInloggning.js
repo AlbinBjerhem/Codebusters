@@ -86,6 +86,7 @@ uPTHead.appendChild(uPTRowHead);
 unclaimedPropertiesTable.appendChild(uPTHead);
 unclaimedPropertiesTable.appendChild(uPTBody);
 
+/*Behöver göra om hur tabellen skapas så att den kan laddas om här  */
 // Föreslagna Objekt
 for (let suggested of tempHousesSuggested) {
   const suggestedRow = document.createElement("tr");
@@ -100,6 +101,7 @@ for (let suggested of tempHousesSuggested) {
   uPTBody.appendChild(suggestedRow);
 
 }
+
 
 //arbeta med sälj lägenheter/object här
 const sellPropertiesTable = document.createElement("table");
@@ -117,7 +119,7 @@ sPTRowHead.appendChild(sPTAgent);
 sPTHead.appendChild(sPTRowHead);
 sellPropertiesTable.appendChild(sPTHead);
 sellPropertiesTable.appendChild(sPTBody);
-
+/*Behöver göra om hur tebellen skapas så att den kan laddas om*/
 //Objekt som Säljs
 for (let house of tempHousesForSale) {
   const houseRow = document.createElement("tr");
@@ -187,10 +189,11 @@ function acceptSuggestedHouse(event) {
   event.preventDefault();
   const tempSuggestion = suggestedSelector.options[suggestedSelector.selectedIndex].value;
   const claimedProperty = findPropety(tempSuggestion);
-  claimedProperty.Agent = currentUser; // något pajar här
+  claimedProperty.Agent = currentUser;
   tempHousesForSale.push(claimedProperty);
   tempHousesSuggested.splice(suggestedSelector.selectedIndex, 1)
   console.log("did something")
+  /*Behöver göra om hur tabellen skapas så att den kan laddas om här  */
 }
 
 function findPropety(searchAdress) {
