@@ -164,8 +164,45 @@ document.body.appendChild(sectionLoggedIn);
 document.querySelector("#logOut").addEventListener("submit",userLogOut)
 sectionLoggedIn.style.display = "none";
 
-function UpdateCreateList() {
-  
+// function för att updatera Selector och tabller, kommer behöva anpassas för JSON
+function UpdateTables() {
+  let newSPTBody = document.createElement("thead")
+  let newUPTBody = document.createElement("thead")
+  for (let house of tempHousesForSale) {
+    const houseRow = document.createElement("tr");
+    const houseAdress = document.createElement("td");
+    const houseAgent = document.createElement("td");
+
+    houseAdress.innerText = house.Address;
+    houseAgent.innerText = house.Agent;
+
+    houseRow.appendChild(houseAdress);
+    houseRow.appendChild(houseAgent);
+    newSPTBody.appendChild(houseRow);
+  }
+  for (let suggested of tempHousesSuggested) {
+    const suggestedRow = document.createElement("tr");
+    const suggestedAdress = document.createElement("td");
+     const suggestedInfo = document.createElement("td");
+
+    suggestedAdress.innerText = suggested.Address;
+    suggestedInfo.innerText = "placeholder";
+
+    suggestedRow.appendChild(suggestedAdress);
+    suggestedRow.appendChild(suggestedInfo);
+    newUPTBody.appendChild(suggestedRow);
+  }
+  const newSuggestedSelector = document.createElement("select");
+  newSuggestedSelector.id = "selectorSuggest"
+  tempHousesSuggested.forEach(house => {
+    const option = document.createElement("option");
+    option.value = house.Address;
+    option.textContent = house.Address;
+    newSuggestedSelector.appendChild(option)
+  })
+  suggestedSelectorForm.replaceChild(newSuggestedSelector, suggestedSelector)
+  unclaimedPropertiesTable.replaceChild(newUPTBody, uPTBody)
+  sellPropertiesTable.replaceChild(newSPTBody, sPTBody)
 }
 
 //Login Function
@@ -193,6 +230,7 @@ function acceptSuggestedHouse(event) {
   tempHousesForSale.push(claimedProperty);
   tempHousesSuggested.splice(suggestedSelector.selectedIndex, 1)
   console.log("did something")
+  UpdateTables();
   /*Behöver göra om hur tabellen skapas så att den kan laddas om här  */
 }
 
