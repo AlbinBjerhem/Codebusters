@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let zipCodeValue = zipCodeInput.value;
 
     displayDiv.innerHTML = `
-      <p>Street Name: ${streetValue}</p>
-      <p>House Number: ${houseNumberValue}</p>
-      <p>City: ${cityValue}</p>
-      <p>ZIP Code: ${zipCodeValue}</p>
+      <p>Gatunamn: ${streetValue}</p>
+      <p>Husnummer: ${houseNumberValue}</p>
+      <p>Stadsdel: ${cityValue}</p>
+      <p>Postkod: ${zipCodeValue}</p>
     `;
   });
 });
@@ -42,4 +42,4 @@ function createInput(type, placeholder) {
   input.type = type;
   input.placeholder = placeholder;
   return input;
-}
+};
