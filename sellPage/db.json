@@ -1,22 +1,3 @@
 {
-  "hissOptions": [
-    "Ja",
-    "Nej"
-  ],
-  "parkeringOptions": [
-    "Ja",
-    "Nej"
-  ],
-  "innergardOptions": [
-    "Ja",
-    "Nej"
-  ],
-  "forradOptions": [
-    "Ja",
-    "Nej"
-  ],
-  "vindOptions": [
-    "Ja",
-    "Nej"
-  ]
+  "id": 1
 }
