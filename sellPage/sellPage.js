@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let houseNumberInput = createInput("text", "Husnummer");
   let cityInput = createInput("text", "Stadsdel");
   let zipCodeInput = createInput("text", "Postkod");
-  let typeOfPropertyInput = createInput("text", "Typ av bostad")
+  let typeOfPropertyInput = createDropdown("Typ av bostad", ["Lägenhet", "Radhus", "Villa"]);
 
   const submitButton = document.createElement("button");
   submitButton.type = "button";
@@ -47,3 +47,18 @@ function createInput(type, placeholder) {
   input.placeholder = placeholder;
   return input;
 };
+
+function createDropdown(placeholder, options) {
+  const select = document.createElement("select");
+  select.placeholder = placeholder;
+
+  options.forEach((optionText) => {
+    const option = document.createElement("option");
+    option.value = optionText;
+    option.text = optionText;
+    select.appendChild(option);
+  });
+
+  return select;
+
+}
