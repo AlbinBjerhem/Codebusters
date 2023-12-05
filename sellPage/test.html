@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="listBuyable.js" defer></script>
+  <title>Test sorteringslista</title>
+</head>
+
+<body>
+
+  <label for="sortOrder">Sortera:</label>
+  <select id="sortOrder" onchange="sortList()">
+    <option value="asc">Från lägst till högst</option>
+    <option value="desc">Från högst till lägst</option>
+  </select>
+
+  <div id="myAppList"></div>
+
+</body>
+
+</html>
