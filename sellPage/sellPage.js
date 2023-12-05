@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let houseNumberInput = createInput("text", "Husnummer");
   let cityInput = createDropdown("Stadsdel", ["Djurgården", "Fredhäll", "Gamla stan", "Gärdet", "Hjorthagen", "Kristineberg", "Kungsholmen", "Lilla Essingen", "Långholmen", "Marieberg", "Norra Djurgården", "Norrmalm", "Reimersholme", "Riddarholmen", "Skeppsholmen", "Södermalm", "Stadshagen", "Stora Essingen", "Vasastaden", "Östermalm"]);
   let zipCodeInput = createInput("text", "Postkod");
+  zipCodeInput.pattern = "\\d{5}";
   let typeOfPropertyInput = createDropdown("Typ av bostad", ["Lägenhet", "Radhus", "Villa"]);
   let roomAmountInput = createDropdown("Antal rum", [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15]);
   let areaInput = createInput("number", "Boarea (m²)");
   let creationYearInput = createYearDropdown("Byggår");
+
 
   const submitButton = document.createElement("button");
   submitButton.type = "button";
@@ -39,6 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let roomAmountValue = roomAmountInput.value;
     let areaValue = areaInput.value;
     let creationYearValue = creationYearInput.value;
+
+    if (!/^\d{5}$/.test(zipCodeValue)) {
+      alert("Vänligen skriv in ett 5 siffrigt postnummer.")
+      return;
+    }
+
 
     displayDiv.innerHTML = `
       <p>Gatunamn: ${streetValue}</p>
