@@ -10,13 +10,26 @@
 
 <body>
 
-  <label for="sortOrder">Sortera:</label>
-  <select id="sortOrder" onchange="sortList()">
+  <label for="sortOrderDesc">Sortera från högst till lägst:</label>
+  <select id="sortOrderDesc" onchange="updateLists()">
     <option value="asc">Från lägst till högst</option>
     <option value="desc">Från högst till lägst</option>
   </select>
+  <div id="descList"></div>
 
-  <div id="myAppList"></div>
+  <label for="sortOrderNewest">Sortera från billigast till dyrast:</label>
+  <select id="sortOrderNewest" onchange="updateLists()">
+    <option value="asc">Från billigast till dyras</option>
+    <option value="desc">Från dyras till billigast</option>
+  </select>
+  <div id="newestList"></div>
+
+  <label for="sortOrderAsc">Sortera från nyast till äldst:</label>
+  <select id="sortOrderAsc" onchange="updateLists()">
+    <option value="asc">Från nyast till äldst</option>
+    <option value="desc">Från äldst till nyast</option>
+  </select>
+  <div id="ascList"></div>
 
 </body>
 

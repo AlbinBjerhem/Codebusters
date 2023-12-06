@@ -1,8 +1,7 @@
-
 var years = [2023, 1990, 1980];
 
-function displayYears(dataList) {
-  var displayElement = document.getElementById("myAppList");
+function displayList(dataList, containerId) {
+  var displayElement = document.getElementById(containerId);
   displayElement.innerHTML = "";
 
   dataList.forEach(function (data) {
@@ -12,10 +11,7 @@ function displayYears(dataList) {
   });
 }
 
-function sortList() {
-  var sortOrder = document.getElementById("sortOrder").value;
-
-
+function sortList(sortOrder, containerId) {
   var sortedYears = years.slice();
 
   if (sortOrder === "asc") {
@@ -24,11 +20,19 @@ function sortList() {
     sortedYears.sort((a, b) => b - a);
   }
 
-
-  displayYears(sortedYears);
-
-  console.log("Listan sorterad:", sortedYears);
+  displayList(sortedYears, containerId);
 }
 
-displayYears(years);
-sortList();
+function updateLists() {
+  var sortOrderDesc = document.getElementById("sortOrderDesc").value;
+  var sortOrderNewest = document.getElementById("sortOrderNewest").value;
+  var sortOrderAsc = document.getElementById("sortOrderAsc").value;
+
+  sortList(sortOrderDesc, "descList");
+  sortList(sortOrderNewest, "newestList");
+  sortList(sortOrderAsc, "ascList");
+}
+
+// Initiera listorna vid sidöppning
+updateLists();
+
