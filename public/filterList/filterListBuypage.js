@@ -61,11 +61,6 @@ function applyFilter(event) {
   filteringList == true;
 }
 
-function presentResults(list) {
-  for (let object of list) {
-    
-  }
-}
 
 //  function readListTest(list) /* denna function ska raderas sen*/{
 //   for (let object of list) {
