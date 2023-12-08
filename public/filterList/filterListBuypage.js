@@ -26,10 +26,41 @@ const filterSubmit = document.createElement("input");
 filterSubmit.type ="submit"
 filterSubmit.value = "Filter List"
 
+const tableFilterTable = document.createElement("table");
+const tFTHead = document.createElement("thead");
+let tFTBody = document.createElement("thead")
+const tFTRowHead = document.createElement("tr");
+const tFTProperty = document.createElement("th");
+//const tFTMoreinfo = document.createElement("th");
+
+tFTProperty.innerText = "Property name";
+//tFTMoreinfo.innerText = "More Info";
+
+tFTRowHead.appendChild(tFTProperty);
+//tFTRowHead.appendChild(tFTMoreinfo);
+tFTHead.appendChild(tFTRowHead);
+tableFilterTable.appendChild(tFTHead);
+tableFilterTable.appendChild(tFTBody);
+
+for (const house of listToFilter) {
+  const filteredRow = document.createElement("tr");
+  const filterAdress = document.createElement("td");
+  //const filterMoreInfo = document.createElement("td");
+
+  filterAdress.innerText = house.adress;
+  //filterMoreInfo.innerText = "More Info";
+
+  filteredRow.appendChild(filterAdress);
+  //filteredRow.appendChild(filterMoreInfo);
+  tFTBody.appendChild(filteredRow);
+}
+
 formFilterCriteria.appendChild(filterChBx1Label);
 formFilterCriteria.appendChild(filterChbx1);
 formFilterCriteria.appendChild(filterSubmit);
 sectionFilterCriteria.appendChild(formFilterCriteria);
+sectionFilterCriteria.appendChild(tableFilterTable)
+
 document.body.appendChild(sectionFilterCriteria);
 
 document.querySelector("#filterCriteria").addEventListener("submit",applyFilter)
@@ -48,22 +79,34 @@ function changeElementVisibility(elementID) {
 
 function applyFilter(event) {
   event.preventDefault();
-  console.log("Filter Applied");
-  let filteredList = []
-  listToFilter.forEach(element => {
-    if (filterChbx1.value == "Elevator" && element.elevator == true) {
-      filteredList.push(element);
+  let filteredList = listToFilter
+  for (let i = 0; i < filteredList.length; i++)
+  {
+    if (filterChbx1.checked == true && filteredList[i].elevator == false)
+    {
+      filteredList.splice(i,1);
       console.log("filtered list");
-      readListTest(filteredList)
     }
-    // Fler Filter kan sättas här    
-  });
+  }
   filteringList == true;
+  UpdateTable(filteredList);
 }
+ 
+function UpdateTable(list) {
+  let newtFTBody = document.createElement("thead")
+  for (let house of list) {
+    const filteredRow = document.createElement("tr");
+    const filterAdress = document.createElement("td");
+    //const filterMoreInfo = document.createElement("td");
 
+    filterAdress.innerText = house.adress;
+    //filterMoreInfo.innerText = "More Info";
 
-//  function readListTest(list) /* denna function ska raderas sen*/{
-//   for (let object of list) {
-//     console.log(object);
-//   }
-// } 
+    filteredRow.appendChild(filterAdress);
+    //filteredRow.appendChild(filterMoreInfo);
+    newtFTBody.appendChild(filteredRow);
+  }
+
+  tableFilterTable.replaceChild(newtFTBody, tFTBody)
+  tFTBody = newtFTBody;
+}
