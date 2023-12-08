@@ -1,22 +1,17 @@
-import { application } from "express";
 
 export async function getAllBostader() {
-  const response = await fetch("/bostader");
+  const response = await fetch("/bostad");
   console.log("Respons - ", response)
-  const result = response.json()
+  const result = await response.json()
   console.log("Result - ", result)
   return result
 }
 
-export async function addNewBostader() {
-  const response = await fetch("/bostader", {
+export async function addNewBostader(newBostad) {
+  const response = await fetch("/bostad", {
     method: "post",
     headers: { "content-Type": "application/json" },
-    body: JSON.stringify({
-      "id": 1,
-      "pris": 50,
-      "adress": "Götgatan 85"
-    })
+    body: JSON.stringify(newBostad)
   })
 
   console.log("Respons - ", response)
