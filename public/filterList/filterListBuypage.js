@@ -1,4 +1,4 @@
-const listToFilter = [
+let listToFilter = [
   {
     adress: "1 hissvägen",
     elevator: true
@@ -82,14 +82,15 @@ function applyFilter(event) {
   let filteredList = listToFilter
   for (let i = 0; i < filteredList.length; i++)
   {
-    if (filterChbx1.checked == true && filteredList[i].elevator == false)
-    {
-      filteredList.splice(i,1);
+    if (filterChbx1.checked == true && filteredList[i].elevator == false) {
+      filteredList.splice(i, 1);
       console.log("filtered list");
     }
+    // lägg till en if sats för varje filter
   }
   filteringList == true;
   UpdateTable(filteredList);
+  resetList();
 }
  
 function UpdateTable(list) {
@@ -106,7 +107,20 @@ function UpdateTable(list) {
     //filteredRow.appendChild(filterMoreInfo);
     newtFTBody.appendChild(filteredRow);
   }
-
+  console.log("table updated");
   tableFilterTable.replaceChild(newtFTBody, tFTBody)
   tFTBody = newtFTBody;
+}
+
+function resetList() {
+  listToFilter = [
+    {
+      adress: "1 hissvägen",
+      elevator: true
+    },
+    {
+      adress: "1 trappvägen",
+      elevator: false
+    }
+  ]
 }
