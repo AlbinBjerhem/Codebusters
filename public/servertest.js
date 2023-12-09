@@ -10,7 +10,7 @@ export async function getAllBostader() {
 export async function addNewBostader(newBostad) {
   const response = await fetch("/bostad", {
     method: "post",
-    headers: { "content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newBostad)
   })
 

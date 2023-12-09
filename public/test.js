@@ -1,19 +1,17 @@
-import { getAllBostader, addNewBostader } from "./servertest.js";
+(async () => {
+  const bostader = await getAllBostader();
+  console.log(bostader);
+  console.log(bostader[1]);
+  console.log(bostader[1].adress);
 
-const bostader = await getAllBostader()
-console.log(bostader)
-console.log(bostader[1])
-console.log(bostader[1].adress)
+  const bostad = {
+    "id": 5,
+    "pris": 50,
+    "adress": "Götgatan 85"
+  };
 
-
-const bostad = {
-  "id": 5,
-  "pris": 50,
-  "adress": "Götgatan 85"
-}
-
-await addNewBostader(bostad)
-
+  await addNewBostader(bostad);
+})();
 
 
 
