@@ -18,13 +18,6 @@
 
 
 
-
-
-
-
-
-
-
 /*console.log(" Ska starta i test.js");
 
 const allBostader = await getAllBostader()

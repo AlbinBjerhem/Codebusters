@@ -1,26 +1,4 @@
 {
-  "bostad": [
-    {
-      "id": 1,
-      "pris": 50,
-      "adress": "Götgatan 85"
-    },
-    {
-      "id": 2,
-      "pris": 60,
-      "adress": "Drottninggatan 123"
-    },
-    {
-      "id": 5,
-      "pris": 50,
-      "adress": "Götgatan 85"
-    }
-  ],
-  "Users": [
-    {
-      "id": 1,
-      "username": "admin",
-      "password": "12345"
-    }
-  ]
+  "bostad": [],
+  "Users": []
 }

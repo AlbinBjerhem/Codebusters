@@ -47,6 +47,34 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    const formData = {
+      street: streetValue,
+      houseNumber: houseNumberValue,
+      city: cityValue,
+      zipCode: zipCodeValue,
+      typeOfProperty: typeOfPropertyValue,
+      roomAmount: roomAmountValue,
+      area: areaValue,
+      creationYear: creationYearValue
+    }
+
+    fetch('http://localhost:3000/bostad',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success', data);
+      })
+
+      .catch(error => {
+        console.error('error', error)
+      })
+
 
     displayDiv.innerHTML = `
       <p>Gatunamn: ${streetValue}</p>
