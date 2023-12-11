@@ -1,32 +1,31 @@
-
-
-// logIn.js
-
 export default function setupLogInPage() {
-
   const tempUsers = [
     {
       username: "admin",
       password: "admin",
-      loggedIn: false
-    }
-  ]
+      loggedIn: false,
+    },
+  ];
 
   const tempHousesForSale = [
     {
       Address: "23 Happylane",
       Agent: "Karl",
-    }
-  ]
+    },
+  ];
 
   const tempHousesSuggested = [
     {
       Address: "24 Happylane",
       Agent: "",
-    }
-  ]
+    },
+  ];
 
   let currentUser = "";
+
+  // Main Section
+  const mainSection = document.querySelector("main");
+
   // Login Sida
   const sectionLogin = document.createElement("section");
   sectionLogin.id = "loginEstateAgent";
@@ -60,15 +59,15 @@ export default function setupLogInPage() {
   sectionLogin.appendChild(loginForm);
   document.body.appendChild(sectionLogin);
 
-  document.querySelector("#loginForm").addEventListener("submit", userLogin)
+  document.querySelector("#loginForm").addEventListener("submit", userLogin);
 
   // In-Loggad Sida
   const sectionLoggedIn = document.createElement("section");
   sectionLoggedIn.id = "sectionEstateAgent";
   const sectionLoggedInh2 = document.createElement("h2");
-  sectionLoggedInh2.innerText = "hej"
-  const logOutForm = document.createElement("form")
-  logOutForm.id = "logOut"
+  sectionLoggedInh2.innerText = "Welcome, " + currentUser;
+  const logOutForm = document.createElement("form");
+  logOutForm.id = "logOut";
   const logOut = document.createElement("input");
   logOut.type = "submit";
   logOut.value = "Log Out";
@@ -79,10 +78,10 @@ export default function setupLogInPage() {
   const uPTBody = document.createElement("thead");
   const uPTRowHead = document.createElement("tr");
   const uPThAdress = document.createElement("th");
-  const uPThInfo = document.createElement("th"); // Knapp för att få ut mer info?
+  const uPThInfo = document.createElement("th");
 
-  uPThAdress.innerText = "Property Adress"
-  uPThInfo.innerText = "More Info"
+  uPThAdress.innerText = "Property Adress";
+  uPThInfo.innerText = "More Info";
 
   uPTRowHead.appendChild(uPThAdress);
   uPTRowHead.appendChild(uPThInfo);
@@ -90,6 +89,7 @@ export default function setupLogInPage() {
   unclaimedPropertiesTable.appendChild(uPTHead);
   unclaimedPropertiesTable.appendChild(uPTBody);
 
+  // Föreslagna Objekt
   for (let suggested of tempHousesSuggested) {
     const suggestedRow = document.createElement("tr");
     const suggestedAdress = document.createElement("td");
@@ -101,10 +101,9 @@ export default function setupLogInPage() {
     suggestedRow.appendChild(suggestedAdress);
     suggestedRow.appendChild(suggestedInfo);
     uPTBody.appendChild(suggestedRow);
-
   }
 
-  //arbeta med sälj lägenheter/object här
+  // Arbeta med sälj lägenheter/object här
   const sellPropertiesTable = document.createElement("table");
   const sPTHead = document.createElement("thead");
   const sPTBody = document.createElement("thead");
@@ -121,6 +120,7 @@ export default function setupLogInPage() {
   sellPropertiesTable.appendChild(sPTHead);
   sellPropertiesTable.appendChild(sPTBody);
 
+  // Objekt som Säljs
   for (let house of tempHousesForSale) {
     const houseRow = document.createElement("tr");
     const houseAdress = document.createElement("td");
@@ -133,27 +133,27 @@ export default function setupLogInPage() {
     houseRow.appendChild(houseAgent);
     sPTBody.appendChild(houseRow);
   }
-  // två tabeller en med hem tagna av mäklare en utan?
+
   const suggestedSelectorForm = document.createElement("form");
   const suggestedSelector = document.createElement("select");
-  suggestedSelector.id = "selectorSuggest"
-  tempHousesSuggested.forEach(house => {
+  suggestedSelector.id = "selectorSuggest";
+  tempHousesSuggested.forEach((house) => {
     const option = document.createElement("option");
     option.value = house.Address;
     option.textContent = house.Address;
-    suggestedSelector.appendChild(option)
-  })
-  const acceptSuggestion = document.createElement("input")
+    suggestedSelector.appendChild(option);
+  });
+  const acceptSuggestion = document.createElement("input");
   acceptSuggestion.type = "submit";
   acceptSuggestion.id = "acceptButton";
-  acceptSuggestion.value = "Accept Suggestion"
+  acceptSuggestion.value = "Accept Suggestion";
 
   suggestedSelectorForm.appendChild(suggestedSelector);
   suggestedSelectorForm.appendChild(acceptSuggestion);
 
-  suggestedSelectorForm.addEventListener("submit", acceptSuggestedHouse)
+  suggestedSelectorForm.addEventListener("submit", acceptSuggestedHouse);
 
-  logOutForm.appendChild(logOut)
+  logOutForm.appendChild(logOut);
   sectionLoggedIn.appendChild(sectionLoggedInh2);
   sectionLoggedIn.appendChild(unclaimedPropertiesTable);
   sectionLoggedIn.appendChild(suggestedSelectorForm);
@@ -161,56 +161,113 @@ export default function setupLogInPage() {
   sectionLoggedIn.appendChild(logOutForm);
   document.body.appendChild(sectionLoggedIn);
 
-  document.querySelector("#logOut").addEventListener("submit", userLogOut)
+  document.querySelector("#logOut").addEventListener("submit", userLogOut);
   sectionLoggedIn.style.display = "none";
 
+  // Function to update Selector and tables
+  function UpdateTables() {
+    let newSPTBody = document.createElement("thead");
+    let newUPTBody = document.createElement("thead");
+    for (let house of tempHousesForSale) {
+      const houseRow = document.createElement("tr");
+      const houseAdress = document.createElement("td");
+      const houseAgent = document.createElement("td");
 
+      houseAdress.innerText = house.Address;
+      houseAgent.innerText = house.Agent;
 
-  //Login Function
+      houseRow.appendChild(houseAdress);
+      houseRow.appendChild(houseAgent);
+      newSPTBody.appendChild(houseRow);
+    }
+    for (let suggested of tempHousesSuggested) {
+      const suggestedRow = document.createElement("tr");
+      const suggestedAdress = document.createElement("td");
+      const suggestedInfo = document.createElement("td");
+
+      suggestedAdress.innerText = suggested.Address;
+      suggestedInfo.innerText = "placeholder";
+
+      suggestedRow.appendChild(suggestedAdress);
+      suggestedRow.appendChild(suggestedInfo);
+      newUPTBody.appendChild(suggestedRow);
+    }
+    const newSuggestedSelector = document.createElement("select");
+    newSuggestedSelector.id = "selectorSuggest";
+    tempHousesSuggested.forEach((house) => {
+      const option = document.createElement("option");
+      option.value = house.Address;
+      option.textContent = house.Address;
+      newSuggestedSelector.appendChild(option);
+    });
+    suggestedSelectorForm.replaceChild(
+      newSuggestedSelector,
+      suggestedSelector
+    );
+    unclaimedPropertiesTable.replaceChild(newUPTBody, uPTBody);
+    sellPropertiesTable.replaceChild(newSPTBody, sPTBody);
+  }
+
+  // Login Function
   function userLogin(event) {
     event.preventDefault();
     const inputUsername = document.getElementById("usernameInput").value;
     const inputPassword = document.getElementById("passwordInput").value;
-    const loginCorrect = tempUsers.some(tempUsers =>
-      tempUsers.password == inputPassword && tempUsers.username == inputUsername)
-    //Kod för att visa och dölja
+    const loginCorrect = tempUsers.some(
+      (tempUsers) =>
+        tempUsers.password == inputPassword &&
+        tempUsers.username == inputUsername
+    );
+
+    // Code to show/hide sections
     if (loginCorrect == true) {
       sectionLoggedIn.style.display = "block";
       sectionLogin.style.display = "none";
       currentUser = inputUsername;
+      displayContentAfterLogin();
     }
-    //Kod för att visa och dölja
+    // Code to show/hide sections
   }
 
-  // accept Suggestion
+  // Display content in main section after login
+  function displayContentAfterLogin() {
+    mainSection.innerHTML = ""; // Clear existing content in the main section
+
+    // Add content to the main section (you may modify this based on your needs)
+    mainSection.appendChild(sectionLoggedIn);
+    sectionLoggedInh2.innerText = "Welcome, " + currentUser;
+  }
+
+  // Accept Suggestion
   function acceptSuggestedHouse(event) {
     event.preventDefault();
-    const tempSuggestion = suggestedSelector.options[suggestedSelector.selectedIndex].value;
-    const claimedProperty = findPropety(tempSuggestion);
-    claimedProperty.Agent = currentUser; // något pajar här
+    const tempSuggestion =
+      suggestedSelector.options[suggestedSelector.selectedIndex].value;
+    const claimedProperty = findProperty(tempSuggestion);
+    claimedProperty.Agent = currentUser;
     tempHousesForSale.push(claimedProperty);
-    tempHousesSuggested.splice(suggestedSelector.selectedIndex, 1)
-    console.log("did something")
+    tempHousesSuggested.splice(suggestedSelector.selectedIndex, 1);
+    console.log("Did something");
+    UpdateTables();
   }
 
-  function findPropety(searchAdress) {
+  function findProperty(searchAddress) {
     for (let property of tempHousesSuggested) {
-      if (property.Address === searchAdress) {
+      if (property.Address === searchAddress) {
         return property;
       }
     }
   }
 
-  // LogOut Function
+  // Logout Function
   function userLogOut(event) {
     event.preventDefault();
-    //Kod för att visa och dölja
+    // Code to show/hide sections
     sectionLoggedIn.style.display = "none";
     sectionLogin.style.display = "block";
     currentUser = "";
-    //Kod för att visa och dölja
+    // Code to show/hide sections
   }
-
 
   return sectionLogin;
 }
