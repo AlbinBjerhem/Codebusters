@@ -1,4 +1,28 @@
 {
-  "bostad": [],
-  "Users": []
+  "bostad": [
+    {
+      "street": "blabla gatan",
+      "houseNumber": "45",
+      "city": "",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "1",
+      "area": "",
+      "creationYear": "",
+      "id": 1
+    },
+    {
+      "street": "hejhej gatan",
+      "houseNumber": "444",
+      "city": "",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "1",
+      "area": "",
+      "creationYear": "",
+      "id": 2
+    }
+  ],
+  "Users": [],
+  "Test": []
 }
