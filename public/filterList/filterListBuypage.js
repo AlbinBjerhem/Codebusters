@@ -65,6 +65,8 @@ document.body.appendChild(sectionFilterCriteria);
 
 document.querySelector("#filterCriteria").addEventListener("submit",applyFilter)
 
+
+
 function changeElementVisibility(elementID) {
   if (elementID.style.display == "none") {
     elementID.style.display = "block";
