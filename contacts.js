@@ -64,7 +64,7 @@ export default function setupContactsPage() {
   document.querySelector("main").appendChild(gridContainer);
 
   // Add a script for collapsible functionality
-  const collapsibleButtons = document.querySelectorAll('.collapsible');
+  /*const collapsibleButtons = document.querySelectorAll('.collapsible');
 
   collapsibleButtons.forEach(button => {
     button.addEventListener('click', function () {
@@ -75,6 +75,27 @@ export default function setupContactsPage() {
       collapsibleButtons.forEach(otherButton => {
         if (otherButton !== button) {
           otherButton.nextElementSibling.classList.remove('active');
+        }
+      });
+    });
+  });*/
+  const collapsibleButtons = document.querySelectorAll('.collapsible');
+
+  collapsibleButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      this.classList.toggle('active'); // Toggle the active class on the button
+      const content = this.nextElementSibling;
+      if (this.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + 'px'; // Expand the content
+      } else {
+        content.style.maxHeight = '0'; // Collapse the content
+      }
+
+      // Close other collapsibles
+      collapsibleButtons.forEach(otherButton => {
+        if (otherButton !== button) {
+          otherButton.classList.remove('active');
+          otherButton.nextElementSibling.style.maxHeight = '0'; // Collapse other content
         }
       });
     });
