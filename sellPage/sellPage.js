@@ -29,6 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
   form.appendChild(creationYearInput);
   form.appendChild(submitButton);
 
+  //------------------------------Alexandras kod -------------------------
+
+  createDropdownMenu("Hiss:", "hissOptions");
+  createDropdownMenu("Parkering:", "parkeringOptions");
+  createDropdownMenu("Innergård:", "innergardOptions");
+  createDropdownMenu("Förråd:", "forradOptions");
+  createDropdownMenu("Vind:", "vindOptions");
+
   document.getElementById("myApp").appendChild(form);
   document.getElementById("myApp").appendChild(displayDiv);
 
@@ -41,6 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let roomAmountValue = roomAmountInput.value;
     let areaValue = areaInput.value;
     let creationYearValue = creationYearInput.value;
+
+    //------------------------------Alexandras kod -------------------------
+    let hissValue = document.getElementById("hissOptions").value;
+    let parkeringValue = document.getElementById("parkeringOptions").value;
+    let innergardValue = document.getElementById("innergardOptions").value;
+    let forradValue = document.getElementById("forradOptions").value;
+    let vindValue = document.getElementById("vindOptions").value;
+
 
     if (!/^\d{5}$/.test(zipCodeValue)) {
       alert("Vänligen skriv in ett 5 siffrigt postnummer.")
@@ -55,7 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
       typeOfProperty: typeOfPropertyValue,
       roomAmount: roomAmountValue,
       area: areaValue,
-      creationYear: creationYearValue
+      creationYear: creationYearValue,
+      hiss: hissValue,
+      parkering: parkeringValue,
+      innergard: innergardValue,
+      forrad: forradValue,
+      vind: vindValue,
     }
 
     fetch('http://localhost:3000/bostad',
@@ -85,6 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>Antal rum: ${roomAmountValue}</p>
       <p>Boarea: ${areaValue} m²</p>
       <p>Byggår: ${creationYearValue}</p>
+      <p>Hiss: ${hissValue}</p>
+      <p>Parkering: ${parkeringValue}</p>
+      <p>Innergård: ${innergardValue}</p>
+      <p>Förråd: ${forradValue}</p>
+      <p>Vind: ${vindValue}</p>
     `;
   });
 });
@@ -131,11 +157,11 @@ function createYearDropdown(placeholder) {
 
 //----------------------------------------------- Alexandras kod ----------------------------------------------------------
 
-function selectOption(category) {
-  var dropdown = document.getElementById(category);
-  var selectedOption = dropdown.options[dropdown.selectedIndex].value;
-  console.log(category + ": " + selectedOption);
-}
+// function selectOption(category) {
+//   var dropdown = document.getElementById(category);
+//   var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+//   console.log(category + ": " + selectedOption);
+// }
 
 function createDropdownMenu(labelText, id) {
   var container = document.createElement("div");
@@ -162,8 +188,9 @@ function createDropdownMenu(labelText, id) {
   document.body.appendChild(document.createElement("br"));
 }
 
-createDropdownMenu("Hiss:", "hissOptions");
-createDropdownMenu("Parkering:", "parkeringOptions");
-createDropdownMenu("Innergård:", "innergardOptions");
-createDropdownMenu("Förråd:", "forradOptions");
-createDropdownMenu("Vind:", "vindOptions");
+// createDropdownMenu("Hiss:", "hissOptions");
+// createDropdownMenu("Parkering:", "parkeringOptions");
+// createDropdownMenu("Innergård:", "innergardOptions");
+// createDropdownMenu("Förråd:", "forradOptions");
+// createDropdownMenu("Vind:", "vindOptions")
+
