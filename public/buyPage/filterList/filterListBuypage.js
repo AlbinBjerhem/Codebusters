@@ -1,3 +1,4 @@
+export default function filterList() {
 //------------Karls Kod----------------
 let listToFilter = [
   {
@@ -64,7 +65,9 @@ sectionFilterCriteria.appendChild(tableFilterTable)
 
 document.body.appendChild(sectionFilterCriteria);
 
-document.querySelector("#filterCriteria").addEventListener("submit",applyFilter)
+document.querySelector("#filterCriteria").addEventListener("submit",applyFilter)  
+}
+
 
 
 
