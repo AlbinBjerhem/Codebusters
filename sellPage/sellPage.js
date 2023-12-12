@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let storageOptionInput = createDropdown("Förråd", ["", "Ja", "Nej"]);
   let atticOptionInput = createDropdown("Vind", ["", "Ja", "Nej"]);
 
+  //------------------ Kontaktuppgifter ---------------------------
+
+  let contactNameInput = createInput("text", "Ditt namn");
+  let contactEmailInput = createInput("email", "Din e-post");
+  let contactPhoneInput = createInput("tel", "Ditt telefonnummer");
+
   let displayDiv = document.createElement("div");
   displayDiv.id = "displayData";
 
@@ -49,6 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
   createLabelInputPair("Vind", atticOptionInput);
 
 
+  //------------------ Kontaktuppgifter ---------------------------
+
+  createLabelInputPair("Ditt namn:", contactNameInput);
+  createLabelInputPair("Din e-post:", contactEmailInput);
+  createLabelInputPair("Ditt telefonnummer:", contactPhoneInput);
+
+
   const submitButton = document.createElement("button");
   submitButton.type = "button";
   submitButton.textContent = "Skicka in";
@@ -76,6 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let yardValue = yardOptionInput.value.trim();
     let storageValue = storageOptionInput.value.trim();
     let atticValue = atticOptionInput.value.trim();
+
+    //------------------ Kontaktuppgifter ---------------------------
+
+    let contactNameValue = contactNameInput.value.trim();
+    let contactEmailValue = contactEmailInput.value.trim();
+    let contactPhoneValue = contactPhoneInput.value.trim();
 
     if (isNaN(areaValue) || areaValue < 0) {
       alert("Vänligen ange en giltig boarea.");
@@ -120,6 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
       yard: yardValue,
       storage: storageValue,
       attic: atticValue,
+      contact: {
+        name: contactNameValue,
+        email: contactEmailValue,
+        phone: contactPhoneValue,
+      },
     }
 
     fetch('http://localhost:3000/bostad',
