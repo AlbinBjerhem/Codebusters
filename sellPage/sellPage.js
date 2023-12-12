@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let zipCodeValue = zipCodeInput.value.trim();
     let typeOfPropertyValue = typeOfPropertyInput.value.trim();
     let roomAmountValue = roomAmountInput.value.trim();
-    let areaValue = areaInput.value.trim();
+    let areaValue = parseFloat(areaInput.value.trim());
     let creationYearValue = creationYearInput.value.trim();
 
     //------------------------------Alexandras kod -------------------------
@@ -76,6 +76,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let yardValue = yardOptionInput.value.trim();
     let storageValue = storageOptionInput.value.trim();
     let atticValue = atticOptionInput.value.trim();
+
+    if (isNaN(areaValue) || areaValue < 0) {
+      alert("Vänligen ange en giltig boarea.");
+      return;
+    }
 
     if (
       !streetValue ||
