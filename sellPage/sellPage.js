@@ -57,6 +57,24 @@ document.addEventListener("DOMContentLoaded", function () {
     let forradValue = document.getElementById("forradOptions").value;
     let vindValue = document.getElementById("vindOptions").value;
 
+    if (
+      !streetValue ||
+      !houseNumberValue ||
+      !cityValue ||
+      !zipCodeValue ||
+      !typeOfPropertyValue ||
+      !roomAmountValue ||
+      !areaValue ||
+      !creationYearValue ||
+      !hissValue ||
+      !parkeringValue ||
+      !innergardValue ||
+      !forradValue ||
+      !vindValue
+    ) {
+      alert("Vänligen fyll i alla fält.");
+      return;
+    }
 
     if (!/^\d{5}$/.test(zipCodeValue)) {
       alert("Vänligen skriv in ett 5 siffrigt postnummer.")
@@ -157,12 +175,6 @@ function createYearDropdown(placeholder) {
 
 //----------------------------------------------- Alexandras kod ----------------------------------------------------------
 
-// function selectOption(category) {
-//   var dropdown = document.getElementById(category);
-//   var selectedOption = dropdown.options[dropdown.selectedIndex].value;
-//   console.log(category + ": " + selectedOption);
-// }
-
 function createDropdownMenu(labelText, id) {
   var container = document.createElement("div");
   var label = document.createElement("label");
@@ -175,7 +187,7 @@ function createDropdownMenu(labelText, id) {
     selectOption(id);
   };
 
-  var options = ["Ja", "Nej"];
+  var options = ["", "Ja", "Nej"];
   for (var i = 0; i < options.length; i++) {
     var option = document.createElement("option");
     option.value = options[i];
@@ -187,10 +199,4 @@ function createDropdownMenu(labelText, id) {
   document.body.appendChild(container);
   document.body.appendChild(document.createElement("br"));
 }
-
-// createDropdownMenu("Hiss:", "hissOptions");
-// createDropdownMenu("Parkering:", "parkeringOptions");
-// createDropdownMenu("Innergård:", "innergardOptions");
-// createDropdownMenu("Förråd:", "forradOptions");
-// createDropdownMenu("Vind:", "vindOptions")
 
