@@ -1,4 +1,8 @@
-// import users stuff here
+// ------- Karls Kod--------
+
+//Import
+import { getAllBostader } from "../servertest"
+
 
 const tempUsers = [
   {
@@ -7,6 +11,9 @@ const tempUsers = [
     loggedIn: false
   }
 ]
+
+const mainList = getAllBostader();
+
 
 const tempHousesForSale = [
   {
@@ -86,7 +93,6 @@ uPTHead.appendChild(uPTRowHead);
 unclaimedPropertiesTable.appendChild(uPTHead);
 unclaimedPropertiesTable.appendChild(uPTBody);
 
-/*Behöver göra om hur tabellen skapas så att den kan laddas om här  */
 // Föreslagna Objekt
 for (let suggested of tempHousesSuggested) {
   const suggestedRow = document.createElement("tr");
@@ -119,7 +125,7 @@ sPTRowHead.appendChild(sPTAgent);
 sPTHead.appendChild(sPTRowHead);
 sellPropertiesTable.appendChild(sPTHead);
 sellPropertiesTable.appendChild(sPTBody);
-/*Behöver göra om hur tebellen skapas så att den kan laddas om*/
+
 //Objekt som Säljs
 for (let house of tempHousesForSale) {
   const houseRow = document.createElement("tr");
