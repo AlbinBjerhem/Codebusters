@@ -242,6 +242,17 @@ function findPropety(searchAdress) {
   }
 }
 
+function sortLists(list) {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].Agent == "") {
+      tempHousesSuggested.push(list[i]);
+    }
+    else {
+      tempHousesForSale.push(list[i]);
+    }    
+  }
+}
+
 
 // LogOut Function
 function userLogOut(event) {
