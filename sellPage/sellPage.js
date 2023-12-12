@@ -60,22 +60,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   submitButton.addEventListener("click", function () {
-    let streetValue = streetInput.value;
-    let houseNumberValue = houseNumberInput.value;
-    let cityValue = cityInput.value;
-    let zipCodeValue = zipCodeInput.value;
-    let typeOfPropertyValue = typeOfPropertyInput.value;
-    let roomAmountValue = roomAmountInput.value;
-    let areaValue = areaInput.value;
-    let creationYearValue = creationYearInput.value;
+    let streetValue = streetInput.value.trim();
+    let houseNumberValue = houseNumberInput.value.trim();
+    let cityValue = cityInput.value.trim();
+    let zipCodeValue = zipCodeInput.value.trim();
+    let typeOfPropertyValue = typeOfPropertyInput.value.trim();
+    let roomAmountValue = roomAmountInput.value.trim();
+    let areaValue = areaInput.value.trim();
+    let creationYearValue = creationYearInput.value.trim();
 
     //------------------------------Alexandras kod -------------------------
 
-    let elevatorValue = elevatorOptionsInput.value;
-    let parkingValue = parkingOptionsInput.value;
-    let yardValue = yardOptionInput.value;
-    let storageValue = storageOptionInput.value;
-    let atticValue = atticOptionInput.value;
+    let elevatorValue = elevatorOptionsInput.value.trim();
+    let parkingValue = parkingOptionsInput.value.trim();
+    let yardValue = yardOptionInput.value.trim();
+    let storageValue = storageOptionInput.value.trim();
+    let atticValue = atticOptionInput.value.trim();
 
     if (
       !streetValue ||
