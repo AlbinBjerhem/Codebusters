@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let zipCodeInput = createInput("text", "Postkod");
   zipCodeInput.pattern = "\\d{5}";
   let typeOfPropertyInput = createDropdown("Typ av bostad", ["", "Lägenhet", "Radhus", "Villa"]);
-  let roomAmountInput = createDropdown("Antal rum", [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15]);
+  let roomAmountInput = createDropdown("Antal rum", ["", 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15]);
   let areaInput = createInput("number", "Boarea (m²)");
   let creationYearInput = createYearDropdown("Byggår");
 
@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //------------------ Kontaktuppgifter ---------------------------
 
-  let contactNameInput = createInput("text", "Ditt namn");
+  let contactNameInput = createInput("text", "För och efternamn");
   let contactEmailInput = createInput("email", "Din e-post");
-  let contactPhoneInput = createInput("tel", "Ditt telefonnummer");
+  let contactPhoneInput = createInput("tel", "Ditt mobiltelefonnummer");
   contactPhoneInput.pattern = "\\d{10}";
 
   let displayDiv = document.createElement("div");
@@ -99,6 +99,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const fullNameWords = contactNameValue.split(/\s+/);
 
+    if (
+      !streetValue ||
+      !houseNumberValue ||
+      !cityValue ||
+      !zipCodeValue ||
+      !typeOfPropertyValue ||
+      !roomAmountValue ||
+      !areaValue ||
+      !creationYearValue ||
+      !elevatorValue ||
+      !parkingValue ||
+      !yardValue ||
+      !storageValue ||
+      !atticValue ||
+      !contactNameValue ||
+      !contactEmailValue ||
+      !contactPhoneInput
+    ) {
+      alert("Vänligen fyll i alla fält.");
+      return;
+    }
+
     if (isNaN(areaValue) || areaValue < 0) {
       alert("Vänligen ange en giltig boarea.");
       return;
@@ -121,25 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!/^\d{10}$/.test(contactPhoneValue)) {
       alert("Vänligen använd enbart siffror i ditt 10 siffriga mobilnummer")
-      return;
-    }
-
-    if (
-      !streetValue ||
-      !houseNumberValue ||
-      !cityValue ||
-      !zipCodeValue ||
-      !typeOfPropertyValue ||
-      !roomAmountValue ||
-      !areaValue ||
-      !creationYearValue ||
-      !elevatorValue ||
-      !parkingValue ||
-      !yardValue ||
-      !storageValue ||
-      !atticValue
-    ) {
-      alert("Vänligen fyll i alla fält.");
       return;
     }
 
