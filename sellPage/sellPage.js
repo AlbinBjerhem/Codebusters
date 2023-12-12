@@ -6,15 +6,18 @@ document.addEventListener("DOMContentLoaded", function () {
   let cityInput = createDropdown("Stadsdel", ["", "Djurgården", "Fredhäll", "Gamla stan", "Gärdet", "Hjorthagen", "Kristineberg", "Kungsholmen", "Lilla Essingen", "Långholmen", "Marieberg", "Norra Djurgården", "Norrmalm", "Reimersholme", "Riddarholmen", "Skeppsholmen", "Södermalm", "Stadshagen", "Stora Essingen", "Vasastaden", "Östermalm"]);
   let zipCodeInput = createInput("text", "Postkod");
   zipCodeInput.pattern = "\\d{5}";
-  let typeOfPropertyInput = createDropdown("Typ av bostad", ["Lägenhet", "Radhus", "Villa"]);
+  let typeOfPropertyInput = createDropdown("Typ av bostad", ["", "Lägenhet", "Radhus", "Villa"]);
   let roomAmountInput = createDropdown("Antal rum", [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15]);
   let areaInput = createInput("number", "Boarea (m²)");
   let creationYearInput = createYearDropdown("Byggår");
 
+  //------------------------------Alexandras kod -------------------------
 
-  const submitButton = document.createElement("button");
-  submitButton.type = "button";
-  submitButton.textContent = "Submit";
+  let elevatorOptionsInput = createDropdown("Hiss", ["", "Ja", "Nej"]);
+  let parkingOptionsInput = createDropdown("Parkering", ["", "Ja", "Nej"]);
+  let yardOptionInput = createDropdown("Innergård", ["", "Ja", "Nej"]);
+  let storageOptionInput = createDropdown("Förråd", ["", "Ja", "Nej"]);
+  let atticOptionInput = createDropdown("Vind", ["", "Ja", "Nej"]);
 
   let displayDiv = document.createElement("div");
   displayDiv.id = "displayData";
@@ -39,11 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //------------------------------Alexandras kod -------------------------
 
-  createDropdownMenu("Hiss:", "hissOptions");
-  createDropdownMenu("Parkering:", "parkeringOptions");
-  createDropdownMenu("Innergård:", "innergardOptions");
-  createDropdownMenu("Förråd:", "forradOptions");
-  createDropdownMenu("Vind:", "vindOptions");
+  createLabelInputPair("Hiss", elevatorOptionsInput);
+  createLabelInputPair("Parkering", parkingOptionsInput);
+  createLabelInputPair("Trädgård", yardOptionInput);
+  createLabelInputPair("Förråd", storageOptionInput);
+  createLabelInputPair("Vind", atticOptionInput);
+
+
+  const submitButton = document.createElement("button");
+  submitButton.type = "button";
+  submitButton.textContent = "Skicka in";
 
   form.appendChild(submitButton);
 
@@ -62,11 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let creationYearValue = creationYearInput.value;
 
     //------------------------------Alexandras kod -------------------------
-    let hissValue = document.getElementById("hissOptions").value;
-    let parkeringValue = document.getElementById("parkeringOptions").value;
-    let innergardValue = document.getElementById("innergardOptions").value;
-    let forradValue = document.getElementById("forradOptions").value;
-    let vindValue = document.getElementById("vindOptions").value;
+
+    let elevatorValue = elevatorOptionsInput.value;
+    let parkingValue = parkingOptionsInput.value;
+    let yardValue = yardOptionInput.value;
+    let storageValue = storageOptionInput.value;
+    let atticValue = atticOptionInput.value;
 
     if (
       !streetValue ||
@@ -77,11 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
       !roomAmountValue ||
       !areaValue ||
       !creationYearValue ||
-      !hissValue ||
-      !parkeringValue ||
-      !innergardValue ||
-      !forradValue ||
-      !vindValue
+      !elevatorValue ||
+      !parkingValue ||
+      !yardValue ||
+      !storageValue ||
+      !atticValue
     ) {
       alert("Vänligen fyll i alla fält.");
       return;
@@ -101,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
       roomAmount: roomAmountValue,
       area: areaValue,
       creationYear: creationYearValue,
-      hiss: hissValue,
-      parkering: parkeringValue,
-      innergard: innergardValue,
-      forrad: forradValue,
-      vind: vindValue,
+      elevator: elevatorValue,
+      parking: parkingValue,
+      yard: yardValue,
+      storage: storageValue,
+      attic: atticValue,
     }
 
     fetch('http://localhost:3000/bostad',
@@ -135,11 +144,11 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>Antal rum: ${roomAmountValue}</p>
       <p>Boarea: ${areaValue} m²</p>
       <p>Byggår: ${creationYearValue}</p>
-      <p>Hiss: ${hissValue}</p>
-      <p>Parkering: ${parkeringValue}</p>
-      <p>Innergård: ${innergardValue}</p>
-      <p>Förråd: ${forradValue}</p>
-      <p>Vind: ${vindValue}</p>
+      <p>Hiss: ${elevatorValue}</p>
+      <p>Parkering: ${parkingValue}</p>
+      <p>Innergård: ${yardValue}</p>
+      <p>Förråd: ${storageValue}</p>
+      <p>Vind: ${atticValue}</p>
     `;
   });
 });
@@ -166,6 +175,7 @@ function createDropdown(placeholder, options) {
 
 }
 
+
 function createYearDropdown(placeholder) {
   const select = document.createElement("select");
   const defaultOption = document.createElement("option");
@@ -182,32 +192,5 @@ function createYearDropdown(placeholder) {
   }
 
   return select;
-}
-
-//----------------------------------------------- Alexandras kod ----------------------------------------------------------
-
-function createDropdownMenu(labelText, id) {
-  var container = document.createElement("div");
-  var label = document.createElement("label");
-  label.textContent = labelText;
-  container.appendChild(label);
-
-  var select = document.createElement("select");
-  select.id = id;
-  select.onchange = function () {
-    selectOption(id);
-  };
-
-  var options = ["", "Ja", "Nej"];
-  for (var i = 0; i < options.length; i++) {
-    var option = document.createElement("option");
-    option.value = options[i];
-    option.textContent = options[i];
-    select.appendChild(option);
-  }
-
-  container.appendChild(select);
-  document.body.appendChild(container);
-  document.body.appendChild(document.createElement("br"));
 }
 
