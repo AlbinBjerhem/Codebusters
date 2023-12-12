@@ -7,20 +7,14 @@ import { getAllBostader } from "../servertest.js"
 const tempUsers = getUsers();
 
 const mainList = getAllBostader();
-
+sortLists(mainList);
 
 const tempHousesForSale = [
-  {
-    Address: "23 Happylane",
-    Agent: "Karl",
-  }
+
 ]
 
 const tempHousesSuggested = [
-  {
-    Address: "24 Happylane",
-    Agent: "",
-  }
+
 ]
 
 let currentUser = "";
@@ -242,6 +236,16 @@ function findPropety(searchAdress) {
   }
 }
 
+function sortLists(list) {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].Agent == "") {
+      tempHousesSuggested.push(list[i]);
+    }
+    else {
+      tempHousesForSale.push(list[i]);
+    }
+  }
+}
 
 // LogOut Function
 function userLogOut(event) {
