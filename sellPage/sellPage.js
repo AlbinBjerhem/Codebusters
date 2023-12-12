@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let contactNameInput = createInput("text", "Ditt namn");
   let contactEmailInput = createInput("email", "Din e-post");
   let contactPhoneInput = createInput("tel", "Ditt telefonnummer");
+  contactPhoneInput.pattern = "\\d{10}";
 
   let displayDiv = document.createElement("div");
   displayDiv.id = "displayData";
@@ -101,6 +102,21 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (!isValidEmail(contactEmailValue)) {
+      alert("Vänligen ange en giltig e-postadress.");
+      return;
+    }
+
+    if (!/^\d{5}$/.test(zipCodeValue)) {
+      alert("Vänligen skriv in ett 5 siffrigt postnummer.")
+      return;
+    }
+
+    if (!/^\d{10}$/.test(contactPhoneValue)) {
+      alert("Vänligen använd enbart siffror i ditt 10 siffriga mobilnummer")
+      return;
+    }
+
     if (
       !streetValue ||
       !houseNumberValue ||
@@ -117,11 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
       !atticValue
     ) {
       alert("Vänligen fyll i alla fält.");
-      return;
-    }
-
-    if (!/^\d{5}$/.test(zipCodeValue)) {
-      alert("Vänligen skriv in ett 5 siffrigt postnummer.")
       return;
     }
 
@@ -204,6 +215,10 @@ function createDropdown(placeholder, options) {
 
 }
 
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
 function createYearDropdown(placeholder) {
   const select = document.createElement("select");
