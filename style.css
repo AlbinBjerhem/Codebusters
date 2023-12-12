@@ -268,3 +268,8 @@ table {
   width: 100px;
 
 }
+
+#displayData {
+  display: grid;
+  text-align: right;
+}
