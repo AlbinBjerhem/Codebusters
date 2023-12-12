@@ -2,6 +2,7 @@
 
 //Import
 import { getAllBostader } from "../servertest.js"
+import { getUsers } from "../servertest.js";
 
 
 const tempUsers = getUsers();
