@@ -242,6 +242,7 @@ function findPropety(searchAdress) {
   }
 }
 
+//sortera ut Lägenheter utan mäklare
 function sortLists(list) {
   for (let i = 0; i < list.length; i++) {
     if (list[i].Agent == "") {
