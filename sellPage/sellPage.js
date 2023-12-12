@@ -97,8 +97,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let contactEmailValue = contactEmailInput.value.trim();
     let contactPhoneValue = contactPhoneInput.value.trim();
 
+    const fullNameWords = contactNameValue.split(/\s+/);
+
     if (isNaN(areaValue) || areaValue < 0) {
       alert("Vänligen ange en giltig boarea.");
+      return;
+    }
+
+    if (fullNameWords.length < 2) {
+      alert("Vänligen ange för och efternamn.");
       return;
     }
 
@@ -189,6 +196,9 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>Innergård: ${yardValue}</p>
       <p>Förråd: ${storageValue}</p>
       <p>Vind: ${atticValue}</p>
+      <p>Namn: ${contactNameValue}</p>
+      <p>Email: ${contactEmailValue}</p>
+      <p>Telefonnummer: ${contactPhoneValue}</p>
     `;
   });
 });
