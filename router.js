@@ -25,8 +25,8 @@ function router() {
     case "#sell":
       document.querySelector("main").innerHTML = "";
 
-      document.querySelector("main").appendChild(setupSellPage());
-      //setupSellPage();
+      //document.querySelector("main").appendChild(setupSellPage());
+      setupSellPage();
       break;
 
     case "#broker":
