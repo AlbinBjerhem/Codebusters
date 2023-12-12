@@ -19,15 +19,23 @@ document.addEventListener("DOMContentLoaded", function () {
   let displayDiv = document.createElement("div");
   displayDiv.id = "displayData";
 
-  form.appendChild(streetInput);
-  form.appendChild(houseNumberInput);
-  form.appendChild(cityInput);
-  form.appendChild(zipCodeInput);
-  form.appendChild(typeOfPropertyInput);
-  form.appendChild(roomAmountInput);
-  form.appendChild(areaInput);
-  form.appendChild(creationYearInput);
-  form.appendChild(submitButton);
+  function createLabelInputPair(labelText, inputElement) {
+    let container = document.createElement("div");
+    let label = document.createElement("label");
+    label.textContent = labelText;
+    container.appendChild(label);
+    container.appendChild(inputElement);
+    form.appendChild(container);
+  }
+
+  createLabelInputPair("Gatunamn:", streetInput);
+  createLabelInputPair("Husnummer:", houseNumberInput);
+  createLabelInputPair("Stadsdel:", cityInput);
+  createLabelInputPair("Postkod:", zipCodeInput);
+  createLabelInputPair("Typ av bostad:", typeOfPropertyInput);
+  createLabelInputPair("Antal rum:", roomAmountInput);
+  createLabelInputPair("Boarea (m²):", areaInput);
+  createLabelInputPair("Byggår:", creationYearInput);
 
   //------------------------------Alexandras kod -------------------------
 
@@ -37,8 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
   createDropdownMenu("Förråd:", "forradOptions");
   createDropdownMenu("Vind:", "vindOptions");
 
+  form.appendChild(submitButton);
+
   document.getElementById("myApp").appendChild(form);
   document.getElementById("myApp").appendChild(displayDiv);
+
 
   submitButton.addEventListener("click", function () {
     let streetValue = streetInput.value;
