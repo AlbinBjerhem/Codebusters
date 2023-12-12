@@ -1,16 +1,10 @@
 // ------- Karls Kod--------
 
 //Import
-import { getAllBostader } from "../servertest"
+import { getAllBostader } from "../servertest.js"
 
 
-const tempUsers = [
-  {
-    username: "admin",
-    password: "admin",
-    loggedIn: false
-  }
-]
+const tempUsers = getUsers();
 
 const mainList = getAllBostader();
 

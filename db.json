@@ -23,6 +23,13 @@
       "id": 2
     }
   ],
-  "Users": [],
+  "Users": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "loggedIn": false,
+      "id":1
+    }
+  ],
   "Test": []
 }
