@@ -1,26 +1,67 @@
 {
   "bostad": [
     {
-      "street": "blabla gatan",
-      "houseNumber": "45",
-      "city": "",
+      "street": "Drottninggatan",
+      "houseNumber": "55",
+      "city": "Fredhäll",
       "zipCode": "12345",
       "typeOfProperty": "Lägenhet",
-      "roomAmount": "1",
-      "area": "",
-      "creationYear": "",
+      "roomAmount": "1.5",
+      "area": 50,
+      "creationYear": "2020",
+      "elevator": "Ja",
+      "parking": "Nej",
+      "yard": "Nej",
+      "storage": "Ja",
+      "attic": "Nej",
+      "contact": {
+        "name": "alexandra Filipsson",
+        "email": "alexandra@gmail.com",
+        "phone": "0730646717"
+      },
       "id": 1
     },
     {
-      "street": "hejhej gatan",
-      "houseNumber": "444",
-      "city": "",
-      "zipCode": "12345",
-      "typeOfProperty": "Lägenhet",
-      "roomAmount": "1",
-      "area": "",
-      "creationYear": "",
+      "street": "götgatan",
+      "houseNumber": "35",
+      "city": "Hjorthagen",
+      "zipCode": "54321",
+      "typeOfProperty": "Radhus",
+      "roomAmount": "5.5",
+      "area": 70,
+      "creationYear": "1989",
+      "elevator": "Nej",
+      "parking": "Nej",
+      "yard": "Ja",
+      "storage": "Nej",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin Bjerhem",
+        "email": "albin@gmail.com",
+        "phone": "0123456789"
+      },
       "id": 2
+    },
+    {
+      "street": "Ringvägen",
+      "houseNumber": "125",
+      "city": "Södermalm",
+      "zipCode": "98745",
+      "typeOfProperty": "Villa",
+      "roomAmount": "7",
+      "area": 150,
+      "creationYear": "1970",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Nej",
+      "contact": {
+        "name": "Kajsa Anka",
+        "email": "kajsa@gmail.com",
+        "phone": "9874563210"
+      },
+      "id": 3
     }
   ],
   "Users": [
@@ -28,7 +69,7 @@
       "username": "admin",
       "password": "admin",
       "loggedIn": false,
-      "id":1
+      "id": 1
     }
   ],
   "Test": []
