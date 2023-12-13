@@ -104,6 +104,22 @@ export default function filterList() {
         filteredList.splice(i, 1);
         console.log("filtered list");
       }
+      if (filterChbx2.checked == true && filteredList[i].garage == false) {
+        filteredList.splice(i, 1);
+        console.log("filtered list");
+      }
+      if (filterChbx3.checked == true && filteredList[i].garden == false) {
+        filteredList.splice(i, 1);
+        console.log("filtered list");
+      }
+      if (filterChbx4.checked == true && filteredList[i].storage == false) {
+        filteredList.splice(i, 1);
+        console.log("filtered list");
+      }
+      if (filterChbx5.checked == true && filteredList[i].atticstorage == false) {
+        filteredList.splice(i, 1);
+        console.log("filtered list");
+      }
       // lägg till en if sats för varje filter
     }
     UpdateTable(filteredList);
