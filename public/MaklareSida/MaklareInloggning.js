@@ -23,7 +23,7 @@ let currentUser = "";
 const sectionLogin = document.createElement("section");
 sectionLogin.id = "loginEstateAgent";
 const sectionloginH2 = document.createElement("h2");
-sectionloginH2.innerText = "Estate Agent Login";
+sectionloginH2.innerText = "Codebusters Login";
 sectionLogin.appendChild(sectionloginH2);
 
 const loginForm = document.createElement("form");
