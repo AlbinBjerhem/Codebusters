@@ -21,6 +21,27 @@
       "area": "",
       "creationYear": "",
       "id": 2
+    },
+    {
+      "street": "Hejgatan",
+      "houseNumber": "15",
+      "city": "Hjorthagen",
+      "zipCode": "12345",
+      "typeOfProperty": "Villa",
+      "roomAmount": "5.5",
+      "area": 15,
+      "creationYear": "2020",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin B",
+        "email": "albinb@gmail.com",
+        "phone": "0736821790"
+      },
+      "id": 3
     }
   ],
   "Users": [
@@ -28,8 +49,7 @@
       "username": "admin",
       "password": "admin",
       "loggedIn": false,
-      "id":1
+      "id": 1
     }
-  ],
-  "Test": []
+  ]
 }

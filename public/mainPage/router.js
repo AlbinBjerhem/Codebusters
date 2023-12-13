@@ -4,7 +4,7 @@ import setupAboutPage from "./about.js";
 import setupPressPage from "./press.js";
 import setupBrokerPage from "./broker.js";
 import setupMainPage from "./mainPage.js";
-import setupSellPage from "./sellPage.js";
+import setupSellPage from "../sellPage/sellPage.js";
 
 
 function router() {
