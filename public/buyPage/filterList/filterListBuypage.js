@@ -95,7 +95,52 @@ export default function filterList() {
   formFilterCriteria.appendChild(filterSubmit);
   sectionFilterCriteria.appendChild(formFilterCriteria);
   sectionFilterCriteria.appendChild(tableFilterTable)
+  function applyFilter(event) {
+    event.preventDefault();
+    let filteredList = listToFilter
+    for (let i = 0; i < filteredList.length; i++)
+    {
+      if (filterChbx1.checked == true && filteredList[i].elevator == false) {
+        filteredList.splice(i, 1);
+        console.log("filtered list");
+      }
+      // lägg till en if sats för varje filter
+    }
+    UpdateTable(filteredList);
+    resetList();
+  }
+  function UpdateTable(list) {
+    let newtFTBody = document.createElement("thead")
+    for (let house of list) {
+      const filteredRow = document.createElement("tr");
+      const filterAdress = document.createElement("td");
+      //const filterMoreInfo = document.createElement("td");
 
+      filterAdress.innerText = house.adress;
+      //filterMoreInfo.innerText = "More Info";
+
+      filteredRow.appendChild(filterAdress);
+      //filteredRow.appendChild(filterMoreInfo);
+      newtFTBody.appendChild(filteredRow);
+    }
+    console.log("table updated");
+    tableFilterTable.replaceChild(newtFTBody, tFTBody)
+    tFTBody = newtFTBody;
+  }
+
+  function resetList() {
+    listToFilter = [
+      {
+        adress: "1 hissvägen",
+        elevator: true
+      },
+      {
+        adress: "1 trappvägen",
+        elevator: false
+      }
+    ]
+  }
+  
   document.body.appendChild(sectionFilterCriteria);
 
   sectionFilterCriteria.addEventListener("submit", applyFilter)  
@@ -114,50 +159,5 @@ function changeElementVisibility(elementID) {
   }
 }
 
-function applyFilter(event) {
-  event.preventDefault();
-  let filteredList = listToFilter
-  for (let i = 0; i < filteredList.length; i++)
-  {
-    if (filterChbx1.checked == true && filteredList[i].elevator == false) {
-      filteredList.splice(i, 1);
-      console.log("filtered list");
-    }
-    // lägg till en if sats för varje filter
-  }
-  filteringList == true;
-  UpdateTable(filteredList);
-  resetList();
-}
+
  
-function UpdateTable(list) {
-  let newtFTBody = document.createElement("thead")
-  for (let house of list) {
-    const filteredRow = document.createElement("tr");
-    const filterAdress = document.createElement("td");
-    //const filterMoreInfo = document.createElement("td");
-
-    filterAdress.innerText = house.adress;
-    //filterMoreInfo.innerText = "More Info";
-
-    filteredRow.appendChild(filterAdress);
-    //filteredRow.appendChild(filterMoreInfo);
-    newtFTBody.appendChild(filteredRow);
-  }
-  console.log("table updated");
-  tableFilterTable.replaceChild(newtFTBody, tFTBody)
-  tFTBody = newtFTBody;
-}
-
-function resetList() {
-  listToFilter = [
-    {
-      adress: "1 hissvägen",
-      elevator: true
-    },
-    {
-      adress: "1 trappvägen",
-      elevator: false
-    }
-  ]
-}
