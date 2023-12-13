@@ -1,8 +1,7 @@
-
 export default function setupSellPage() {
 
   document.addEventListener("DOMContentLoaded", function () {
-    let form = document.createElement("form");
+    // let form = document.createElement("form");
 
     let streetInput = createInput("text", "Gatunamn");
     let houseNumberInput = createInput("text", "Husnummer");
@@ -32,49 +31,52 @@ export default function setupSellPage() {
     let displayDiv = document.createElement("div");
     displayDiv.id = "displayData";
 
+    let formContainer = document.createElement("div");
+    formContainer.id = "formContainer";
+
     function createLabelInputPair(labelText, inputElement) {
       let container = document.createElement("div");
       let label = document.createElement("label");
       label.textContent = labelText;
       container.appendChild(label);
       container.appendChild(inputElement);
-      form.appendChild(container);
+      formContainer.appendChild(container);
     }
 
-    createLabelInputPair("Gatunamn:", streetInput);
-    createLabelInputPair("Husnummer:", houseNumberInput);
-    createLabelInputPair("Stadsdel:", cityInput);
-    createLabelInputPair("Postkod:", zipCodeInput);
-    createLabelInputPair("Typ av bostad:", typeOfPropertyInput);
-    createLabelInputPair("Antal rum:", roomAmountInput);
-    createLabelInputPair("Boarea (m²):", areaInput);
-    createLabelInputPair("Byggår:", creationYearInput);
+    createLabelInputPair("Gatunamn:", streetInput, formContainer);
+    createLabelInputPair("Husnummer:", houseNumberInput, formContainer);
+    createLabelInputPair("Stadsdel:", cityInput, formContainer);
+    createLabelInputPair("Postkod:", zipCodeInput, formContainer);
+    createLabelInputPair("Typ av bostad:", typeOfPropertyInput, formContainer);
+    createLabelInputPair("Antal rum:", roomAmountInput, formContainer);
+    createLabelInputPair("Boarea (m²):", areaInput, formContainer);
+    createLabelInputPair("Byggår:", creationYearInput, formContainer);
 
     //------------------------------Alexandras kod -------------------------
 
-    createLabelInputPair("Hiss", elevatorOptionsInput);
-    createLabelInputPair("Parkering", parkingOptionsInput);
-    createLabelInputPair("Trädgård", yardOptionInput);
-    createLabelInputPair("Förråd", storageOptionInput);
-    createLabelInputPair("Vind", atticOptionInput);
+    createLabelInputPair("Hiss", elevatorOptionsInput, formContainer);
+    createLabelInputPair("Parkering", parkingOptionsInput, formContainer);
+    createLabelInputPair("Trädgård", yardOptionInput, formContainer);
+    createLabelInputPair("Förråd", storageOptionInput, formContainer);
+    createLabelInputPair("Vind", atticOptionInput, formContainer);
 
 
     //------------------ Kontaktuppgifter ---------------------------
 
-    createLabelInputPair("Ditt namn:", contactNameInput);
-    createLabelInputPair("Din e-post:", contactEmailInput);
-    createLabelInputPair("Ditt telefonnummer:", contactPhoneInput);
+    createLabelInputPair("Ditt namn:", contactNameInput, formContainer);
+    createLabelInputPair("Din e-post:", contactEmailInput, formContainer);
+    createLabelInputPair("Ditt telefonnummer:", contactPhoneInput, formContainer);
 
 
     const submitButton = document.createElement("button");
     submitButton.type = "button";
     submitButton.textContent = "Skicka in";
 
-    form.appendChild(submitButton);
+    formContainer.appendChild(submitButton);
 
     document.querySelector("main").innerHTML = "";
 
-    document.getElementById("myApp").appendChild(form);
+    document.getElementById("myApp").appendChild(formContainer);
     document.getElementById("myApp").appendChild(displayDiv);
 
 
@@ -191,6 +193,7 @@ export default function setupSellPage() {
 
 
       displayDiv.innerHTML = `
+      <p><bold>"Tack för att du valt Code Busters som din mäklare! Kontrollera nedanstående information och återkom om något inte är korrekt.</bold></p>
       <p>Gatunamn: ${streetValue}</p>
       <p>Husnummer: ${houseNumberValue}</p>
       <p>Stadsdel: ${cityValue}</p>

@@ -269,7 +269,47 @@ table {
 
 }
 
-#displayData {
+/* #displayData {
   display: grid;
   text-align: right;
+} */
+
+#displayData {
+  display: grid;
+  gap: 10px;
+  text-align: left;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#formContainer {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 0 auto;
+  /* Center the container horizontally */
+  max-width: 600px;
+  /* Set a maximum width for better readability */
+}
+
+#formContainer div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  /* Adjust as needed */
+  border-bottom: 1px solid #ccc;
+  /* Add a border at the bottom of each div */
+  padding-bottom: 10px;
+  /* Add padding to separate text and input */
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  /* Center the button horizontally */
+  padding: 10px 20px;
+  /* Add padding to the button */
 }
