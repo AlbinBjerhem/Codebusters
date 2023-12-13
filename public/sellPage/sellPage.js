@@ -2,6 +2,29 @@ export default function setupSellPage() {
 
   document.addEventListener("DOMContentLoaded", function () {
     // let form = document.createElement("form");
+    let titleContainer = document.createElement("div");
+    titleContainer.id = "titleContainer";
+
+    // Title
+    let title = document.createElement("h2");
+    title.textContent = "Vi är glada att ni säljer bostäder med oss!";
+    titleContainer.appendChild(title);
+
+    // Rules
+    let rules = document.createElement("h3");
+    rules.textContent = "Vänligen läs igenom informationen om hur du fyller i formuläret och vad som händer därefter.";
+    titleContainer.appendChild(rules);
+
+    let text = document.createElement("p");
+    text.textContent = "Fyll i ALLA fält i formuläret. Dubbelkolla informationen och klicka på 'Skicka In'. Efter det kommer en kopia av ditt formulär, där du kan göra en ytterligare kontroll. Om du upptäcker några fel är du välkommen att kontakta oss via e-post: basta.meklare@codebusters.se";
+    titleContainer.appendChild(text);
+
+    let text1 = document.createElement("p");
+    text1.textContent = "När du har skickat in ditt formulär kommer det till oss. Vi kommer att gå igenom det och om allt stämmer kommer vi att godkänna din ansökan och kontakta dig inom 3 dagar.";
+    titleContainer.appendChild(text1);
+
+    // Append the title container to the main content
+    document.getElementById("myApp").appendChild(titleContainer);
 
     let streetInput = createInput("text", "Gatunamn");
     let houseNumberInput = createInput("text", "Husnummer");
@@ -31,6 +54,8 @@ export default function setupSellPage() {
     let displayDiv = document.createElement("div");
     displayDiv.id = "displayData";
 
+
+
     let formContainer = document.createElement("div");
     formContainer.id = "formContainer";
 
@@ -38,9 +63,12 @@ export default function setupSellPage() {
       let container = document.createElement("div");
       let label = document.createElement("label");
       label.textContent = labelText;
+
       container.appendChild(label);
       container.appendChild(inputElement);
+
       formContainer.appendChild(container);
+
     }
 
     createLabelInputPair("Gatunamn:", streetInput, formContainer);
@@ -74,7 +102,7 @@ export default function setupSellPage() {
 
     formContainer.appendChild(submitButton);
 
-    document.querySelector("main").innerHTML = "";
+    //document.querySelector("main").innerHTML = "";
 
     document.getElementById("myApp").appendChild(formContainer);
     document.getElementById("myApp").appendChild(displayDiv);
@@ -193,7 +221,7 @@ export default function setupSellPage() {
 
 
       displayDiv.innerHTML = `
-      <p><bold>"Tack för att du valt Code Busters som din mäklare! Kontrollera nedanstående information och återkom om något inte är korrekt.</bold></p>
+      <p><bold>"Tack för att du valt Code Busters som din mäklare! Kontrollera nedanstående information och återkom om något inte är korrekt (basta.meklare@codebusters.se).</bold></p>
       <p>Gatunamn: ${streetValue}</p>
       <p>Husnummer: ${houseNumberValue}</p>
       <p>Stadsdel: ${cityValue}</p>

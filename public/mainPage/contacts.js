@@ -48,7 +48,7 @@ export default function setupContactsPage() {
     { title: 'Organisationsnummer', content: '556644-7759' },
     { title: 'Styrelsens säte', content: 'Stockholm' },
     { title: 'VAT-nummer', content: 'SE556260008901' },
-    { title: 'Kontakta våra medarbetare', content: 'besta.meklare@codebusters.se' },
+    { title: 'Kontakta våra medarbetare', content: 'basta.meklare@codebusters.se' },
     { title: 'Bannerannonsering och reklam', content: 'banner@codebusters.se' },
     { title: 'Allmänna frågor & Support', content: 'support@codebusters.se' }
   ];
