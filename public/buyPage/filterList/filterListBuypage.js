@@ -1,71 +1,89 @@
 export default function filterList() {
-//------------Karls Kod----------------
-let listToFilter = [
-  {
-    adress: "1 hissvägen",
-    elevator: true
-  },
-  {
-    adress: "1 trappvägen",
-    elevator: false
+  //------------Karls Kod----------------
+  let listToFilter = [
+    {
+      adress: "1 hissvägen",
+      elevator: true
+    },
+    {
+      adress: "1 trappvägen",
+      elevator: false
+    }
+  ]
+  const sectionFilterCriteria = document.createElement("section");
+  sectionFilterCriteria.id = "filterCriteria";
+  const formFilterCriteria = document.createElement("form");
+  formFilterCriteria.id = "filterForm";
+  const filterChBx1Label = document.createElement("label")
+  filterChBx1Label.innerText = "Elevator Access: "
+  const filterChbx1 = document.createElement("input")
+  filterChbx1.id = "filterElevator"
+  filterChbx1.type = "checkbox";
+  filterChbx1.name = "Elevator Access";
+  filterChbx1.value = "Elevator";
+  const filterChbx2 = document.createElement("input")
+  filterChbx2.id = "filterGarage"
+  filterChbx2.type = "checkbox";
+  filterChbx2.name = "Garage Access";
+  filterChbx2.value = "Garage";
+  const filterChbx3 = document.createElement("input")
+  filterChbx3.id = "filterGarden"
+  filterChbx3.type = "checkbox";
+  filterChbx3.name = "Garden Access";
+  filterChbx3.value = "Garden";
+  const filterChbx4 = document.createElement("input")
+  filterChbx4.id = "filterStorage"
+  filterChbx4.type = "checkbox";
+  filterChbx4.name = "Storage Access";
+  filterChbx4.value = "Storage";
+  const filterChbx5 = document.createElement("input")
+  filterChbx5.id = "filterAtticStorage"
+  filterChbx5.type = "checkbox";
+  filterChbx5.name = "Attic Storage Access";
+  filterChbx5.value = "AtticStorage";
+  const filterSubmit = document.createElement("input");
+  filterSubmit.type ="submit"
+  filterSubmit.value = "Filter List"
+
+  const tableFilterTable = document.createElement("table");
+  const tFTHead = document.createElement("thead");
+  let tFTBody = document.createElement("thead")
+  const tFTRowHead = document.createElement("tr");
+  const tFTProperty = document.createElement("th");
+  //const tFTMoreinfo = document.createElement("th");
+
+  tFTProperty.innerText = "Property name";
+  //tFTMoreinfo.innerText = "More Info";
+
+  tFTRowHead.appendChild(tFTProperty);
+  //tFTRowHead.appendChild(tFTMoreinfo);
+  tFTHead.appendChild(tFTRowHead);
+  tableFilterTable.appendChild(tFTHead);
+  tableFilterTable.appendChild(tFTBody);
+
+  for (const house of listToFilter) {
+    const filteredRow = document.createElement("tr");
+    const filterAdress = document.createElement("td");
+    //const filterMoreInfo = document.createElement("td");
+
+    filterAdress.innerText = house.adress;
+    //filterMoreInfo.innerText = "More Info";
+
+    filteredRow.appendChild(filterAdress);
+    //filteredRow.appendChild(filterMoreInfo);
+    tFTBody.appendChild(filteredRow);
   }
-]
 
-const filteringList = false;
+  formFilterCriteria.appendChild(filterChBx1Label);
+  formFilterCriteria.appendChild(filterChbx1);
+  formFilterCriteria.appendChild(filterSubmit);
+  sectionFilterCriteria.appendChild(formFilterCriteria);
+  sectionFilterCriteria.appendChild(tableFilterTable)
 
-const sectionFilterCriteria = document.createElement("section");
-sectionFilterCriteria.id = "filterCriteria";
-const formFilterCriteria = document.createElement("form");
-formFilterCriteria.id = "filterForm";
-const filterChBx1Label = document.createElement("label")
-filterChBx1Label.innerText = "Elevator Access: "
-const filterChbx1 = document.createElement("input")
-filterChbx1.id = "filterElevator"
-filterChbx1.type = "checkbox";
-filterChbx1.name = "Elevator Access";
-filterChbx1.value = "Elevator";
-const filterSubmit = document.createElement("input");
-filterSubmit.type ="submit"
-filterSubmit.value = "Filter List"
+  document.body.appendChild(sectionFilterCriteria);
 
-const tableFilterTable = document.createElement("table");
-const tFTHead = document.createElement("thead");
-let tFTBody = document.createElement("thead")
-const tFTRowHead = document.createElement("tr");
-const tFTProperty = document.createElement("th");
-//const tFTMoreinfo = document.createElement("th");
-
-tFTProperty.innerText = "Property name";
-//tFTMoreinfo.innerText = "More Info";
-
-tFTRowHead.appendChild(tFTProperty);
-//tFTRowHead.appendChild(tFTMoreinfo);
-tFTHead.appendChild(tFTRowHead);
-tableFilterTable.appendChild(tFTHead);
-tableFilterTable.appendChild(tFTBody);
-
-for (const house of listToFilter) {
-  const filteredRow = document.createElement("tr");
-  const filterAdress = document.createElement("td");
-  //const filterMoreInfo = document.createElement("td");
-
-  filterAdress.innerText = house.adress;
-  //filterMoreInfo.innerText = "More Info";
-
-  filteredRow.appendChild(filterAdress);
-  //filteredRow.appendChild(filterMoreInfo);
-  tFTBody.appendChild(filteredRow);
-}
-
-formFilterCriteria.appendChild(filterChBx1Label);
-formFilterCriteria.appendChild(filterChbx1);
-formFilterCriteria.appendChild(filterSubmit);
-sectionFilterCriteria.appendChild(formFilterCriteria);
-sectionFilterCriteria.appendChild(tableFilterTable)
-
-document.body.appendChild(sectionFilterCriteria);
-
-document.querySelector("#filterCriteria").addEventListener("submit",applyFilter)  
+  sectionFilterCriteria.addEventListener("submit", applyFilter)  
+  return sectionFilterCriteria
 }
 
 
