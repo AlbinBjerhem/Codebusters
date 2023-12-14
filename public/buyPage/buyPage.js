@@ -179,17 +179,17 @@ function applyFilter(event) {
       filteredList.splice(i, 1);
       console.log("filtered list");
     }
-    if (Number(filterPriceInput) < filteredList[i].price) {
-      filteredList.splice(i, 1);
-      console.log("filtered list");
-    }
+    // if (Number(filterPriceInput) < filteredList[i].price) {
+    //   filteredList.splice(i, 1);
+    //   console.log("filtered list");
+    //}
     // lägg till en if sats för varje filter
     // se till att kraven som jämförs är rätt
   }
   UpdateTable(filteredList);
   resetList();
 }
-
+//updatera innehållet
 function UpdateTable(list) {
   let newtFTBody = document.createElement("thead")
   for (let house of list) {

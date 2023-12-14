@@ -81,18 +81,16 @@ function applyFilter(event) {
   UpdateTable(filteredList);
   resetList();
 }
+// updaterar innehåll med filtrerade listan
 function UpdateTable(list) {
   let newtFTBody = document.createElement("thead")
   for (let house of list) {
     const filteredRow = document.createElement("tr");
     const filterAdress = document.createElement("td");
-    //const filterMoreInfo = document.createElement("td");
 
     filterAdress.innerText = house.adress;
-    //filterMoreInfo.innerText = "More Info";
 
     filteredRow.appendChild(filterAdress);
-    //filteredRow.appendChild(filterMoreInfo);
     newtFTBody.appendChild(filteredRow);
   }
   console.log("table updated");
@@ -100,6 +98,7 @@ function UpdateTable(list) {
   tFTBody = newtFTBody;
 }
 
+//återställer listan
 function resetList() {
   listToFilter = [
     {
