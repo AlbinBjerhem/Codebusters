@@ -2,6 +2,8 @@ const setupBuyPage = () => {
   fetchDataAndRenderBuyPage();
 };
 
+let currentSelectedProperty = null;
+
 const fetchDataAndRenderBuyPage = async () => {
   try {
     const response = await fetch('http://localhost:3000/bostad');
@@ -28,18 +30,30 @@ const renderBuyPage = (bostadData) => {
 
       const detailsElement = document.createElement('div');
       detailsElement.classList.add('details');
-      detailsElement.innerHTML = `<p>Typ av bostad: ${property.typeOfProperty}</p>
-                                         <p>Antal rum: ${property.roomAmount}</p>
-                                         <p>Byggår: ${property.creationYear}</p>
-                                         <p>Hiss: ${property.elevator}</p>
-                                         <p>Parkering: ${property.parking}</p>
-                                         <p>Innegård: ${property.yard}</p>
-                                         <p>Förråd: ${property.storage}</p>
-                                         <p>Vind: ${property.attic}</p>`;
+      detailsElement.innerHTML = `
+                <div class="property-details">
+                    <p>Typ av bostad: ${property.typeOfProperty}</p>
+                    <p>Antal rum: ${property.roomAmount}</p>
+                    <p>Byggår: ${property.creationYear}</p>
+                    <p>Hiss: ${property.elevator}</p>
+                </div>
+                <div class="property-details">
+                    <p>Parkering: ${property.parking}</p>
+                    <p>Innegård: ${property.yard}</p>
+                    <p>Förråd: ${property.storage}</p>
+                    <p>Vind: ${property.attic}</p>
+                </div>
+            `;
       propertyElement.appendChild(detailsElement);
 
       propertyElement.addEventListener('click', () => {
+        if (currentSelectedProperty) {
+          currentSelectedProperty.classList.remove('selected');
+        }
+
         propertyElement.classList.toggle('selected');
+
+        currentSelectedProperty = propertyElement;
       });
 
       appContainer.appendChild(propertyElement);

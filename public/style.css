@@ -329,20 +329,35 @@ button {
   margin: 5px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  border-radius: 10px;
+  background-color: #fff;
+  z-index: 0;
 }
 
 .property.selected {
   transform: scaleY(1.2);
-  /* Increase the height of the selected item */
   z-index: 1;
-  /* Bring the selected item to the foreground */
 }
 
 .details {
   display: none;
+  /* Initially hide the details */
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  /* Display details in rows of 4 when selected */
+}
+
+.details p {
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
 }
 
 .property.selected .details {
-  display: block;
-  /* Show details section when the property is selected */
+  display: grid;
+  /* Show the details when the property is selected */
 }
