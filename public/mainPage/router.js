@@ -5,6 +5,7 @@ import setupPressPage from "./press.js";
 import setupBrokerPage from "./broker.js";
 import setupMainPage from "./mainPage.js";
 import setupSellPage from "../sellPage/sellPage.js";
+import setupBuyPage from "../buyPage/buyPage.js"
 
 
 function router() {
@@ -27,6 +28,13 @@ function router() {
 
       //document.querySelector("main").appendChild(setupSellPage());
       setupSellPage();
+      break;
+
+    case "#buy":
+      document.querySelector("main").innerHTML = "";
+      document.getElementById("myApp").innerHTML = "";
+      // Call the setupBuyPage function
+      setupBuyPage();
       break;
 
     case "#broker":
