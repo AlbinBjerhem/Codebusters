@@ -32,7 +32,7 @@ function router() {
 
     case "#buy":
       document.querySelector("main").innerHTML = "";
-      document.getElementById("myApp").innerHTML = "";
+      //document.getElementById("myApp").innerHTML = "";
       // Call the setupBuyPage function
       setupBuyPage();
       break;
@@ -40,8 +40,8 @@ function router() {
     case "#broker":
       document.querySelector("main").innerHTML = "";
       document.getElementById("myApp").innerHTML = "";
-      document.querySelector("main").appendChild(setupBrokerPage());
-      //setupBrokerPage();
+      //document.querySelector("main").appendChild(setupBrokerPage());
+      setupBrokerPage();
       break;
 
     case "#logIn":

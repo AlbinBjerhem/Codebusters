@@ -1,3 +1,6 @@
+
+
+
 export default function setupSellPage() {
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -290,4 +293,3 @@ export default function setupSellPage() {
 
 }
 setupSellPage();
-
