@@ -8,7 +8,25 @@ export default function setupLogInPage() {
 
 
 
-  const tempUsers = getUsers();
+  // Assume getUsers() returns a promise
+  const tempUsersPromise = getUsers();
+
+  // Use async/await to wait for the promise to resolve
+  const initializeLoginPage = async () => {
+    try {
+      const tempUsers = await tempUsersPromise;
+      // Now you can use tempUsers as an array
+
+      // Rest of your code that relies on tempUsers
+
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
+
+  // Call the async function
+  initializeLoginPage();
+
 
   const mainList = getAllBostader();
   sortLists(mainList);
@@ -204,19 +222,30 @@ export default function setupLogInPage() {
   }
 
   //Login Function
-  function userLogin(event) {
+  async function userLogin(event) {
     event.preventDefault();
     const inputUsername = document.getElementById("usernameInput").value;
     const inputPassword = document.getElementById("passwordInput").value;
-    const loginCorrect = tempUsers.some(tempUsers =>
-      tempUsers.password == inputPassword && tempUsers.username == inputUsername)
-    //Kod för att visa och dölja
-    if (loginCorrect == true) {
-      sectionLoggedIn.style.display = "block";
-      sectionLogin.style.display = "none";
-      currentUser = inputUsername;
+
+    try {
+      // Wait for the getUsers() promise to resolve
+      const tempUsers = await tempUsersPromise;
+
+      // Check if the user exists and the password is correct
+      const loginCorrect = tempUsers.some(tempUser =>
+        tempUser.password == inputPassword && tempUser.username == inputUsername);
+
+      if (loginCorrect) {
+        sectionLoggedIn.style.display = "block";
+        sectionLogin.style.display = "none";
+        currentUser = inputUsername;
+      } else {
+        // Handle incorrect login
+        console.log('Incorrect username or password');
+      }
+    } catch (error) {
+      console.error('Error fetching users:', error);
     }
-    //Kod för att visa och dölja
   }
 
   // accept Suggestion
