@@ -19,11 +19,14 @@ const fetchDataAndRenderBuyPage = async () => {
 };
 
 const renderBuyPage = (bostadData) => {
-  
+
   const appContainer = document.getElementById('myApp');
   appContainer.innerHTML = '<h1>Våra listade bostäder för försäljning!</h1>';
-  appContainer.appendChild(createFilterForm());  
-    if (bostadData && Array.isArray(bostadData)) {
+  appContainer.appendChild(createFilterForm());
+
+
+
+  if (bostadData && Array.isArray(bostadData)) {
     bostadData.forEach(property => {
       const propertyElement = document.createElement('div');
       propertyElement.classList.add('property');
@@ -78,6 +81,138 @@ const renderBuyPage = (bostadData) => {
   }
 };
 
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('http://localhost:3000/bostad')
+    .then(response => response.json())
+    .then(data => {
+      console.log('Data fetched:', data);
+
+      const myAppElement = document.getElementById('myApp');
+      const sortSelect = createSortDropdown();
+
+      function createSortDropdown() {
+        const dropdown = document.createElement('select');
+        dropdown.id = 'sortSelect';
+
+        const sortOptions = [];
+
+        sortOptions.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option;
+          optionElement.textContent = option.charAt(0).toUpperCase() + option.slice(1);
+          dropdown.appendChild(optionElement);
+        });
+
+        const antalRumOptions = ['Antal rum - lågt till högt', 'Antal rum - högt till lågt'];
+
+        antalRumOptions.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.value = 'antalRum';
+          optionElement.textContent = option;
+          dropdown.appendChild(optionElement);
+        });
+
+        const byggArOptions = ['Byggår - gammalt till nytt', 'Byggår - nytt till gammalt'];
+
+        byggArOptions.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.value = 'byggAr';
+          optionElement.textContent = option;
+          dropdown.appendChild(optionElement);
+        });
+
+        const boareaOptions = ['Boarea - liten till stor', 'Boarea - stor till liten'];
+
+        boareaOptions.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.value = 'boarea';
+          optionElement.textContent = option;
+          dropdown.appendChild(optionElement);
+        });
+
+        dropdown.addEventListener('change', sortData);
+
+        const labelText = document.createElement('span');
+        labelText.textContent = 'Sortera på:';
+        document.body.appendChild(labelText);
+        document.body.appendChild(dropdown);
+
+        return dropdown;
+      }
+
+      function sortData() {
+        const selectedCriterion = sortSelect.value;
+
+        if (selectedCriterion === 'antalRum') {
+          if (sortSelect.selectedIndex === 3) {
+            data.sort((a, b) => b.roomAmount - a.roomAmount);
+          } else {
+            data.sort((a, b) => a.roomAmount - b.roomAmount);
+          }
+        } else if (selectedCriterion === 'byggAr') {
+          if (sortSelect.selectedIndex === 2) {
+            data.sort((a, b) => a.creationYear - b.creationYear);
+          } else {
+            data.sort((a, b) => b.creationYear - a.creationYear);
+          }
+        } else if (selectedCriterion === 'boarea') {
+          if (sortSelect.selectedIndex === 5) {
+            data.sort((a, b) => a.area - b.area);
+          } else {
+            data.sort((a, b) => b.area - a.area);
+          }
+        } else {
+          data.sort((a, b) => {
+            if (a[selectedCriterion] < b[selectedCriterion]) return -1;
+            if (a[selectedCriterion] > b[selectedCriterion]) return 1;
+            return 0;
+          });
+        }
+
+        renderData();
+      }
+
+      function renderData() {
+        myAppElement.innerHTML = '';
+
+        const ulElement = document.createElement('ul');
+        data.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `Boarea: ${item.area}, Antal rum : ${item.roomAmount}, Byggår: ${item.creationYear}, Adress: ${item.street}, ${item.houseNumber}, ${item.city}, ${item.zipCode}`;
+          ulElement.appendChild(listItem);
+        });
+
+        myAppElement.appendChild(ulElement);
+
+        console.log('Data displayed successfully.');
+      }
+
+      document.body.appendChild(sortSelect);
+
+      sortData();
+    })
+    .catch(error => console.error('Error fetching data:', error));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const showInterestForm = (property) => {
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('modal-container');
@@ -121,7 +256,6 @@ const showInterestForm = (property) => {
   document.body.appendChild(modalContainer);
 };
 
-
 const updatePropertyInfo = async (property, newInfo) => {
   const newInterest = {
     name: newInfo.name,
@@ -153,6 +287,9 @@ const updatePropertyInfo = async (property, newInfo) => {
     console.error('Error updating property data:', error);
   }
 };
+
+
+
 //--------Karls Kod----------
 // Filter function
 function applyFilter(event) {
@@ -194,11 +331,11 @@ function UpdateTable(list) {
   let newtFTBody = document.createElement("thead")
   for (let house of list) {
     const filteredRow = document.createElement("tr");
-    const filterAdress = document.createElement("td");   
+    const filterAdress = document.createElement("td");
 
     filterAdress.innerText = house.adress;
-    
-    filteredRow.appendChild(filterAdress);    
+
+    filteredRow.appendChild(filterAdress);
     newtFTBody.appendChild(filteredRow);
   }
   console.log("table updated");
@@ -209,6 +346,8 @@ function UpdateTable(list) {
 function resetList() {
   listToFilter = []
 }
+
+
 
 function createFilterForm() {
   const sectionFilterCriteria = document.createElement("section");
