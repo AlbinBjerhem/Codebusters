@@ -15,11 +15,18 @@
       "storage": "Ja",
       "attic": "Ja",
       "contact": {
-        "name": "Albin B",
-        "email": "albinb@gmail.com",
+        "name": "Albin Bjerhem",
+        "email": "albinbjerhem@gmail.com",
         "phone": "0736821790"
       },
-      "id": 1
+      "id": 1,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "0736821790"
+        }
+      ]
     },
     {
       "street": "Hejgatdsadsadsaan",
@@ -187,7 +194,14 @@
         "email": "pok@gd.com",
         "phone": "1234567890"
       },
-      "id": 9
+      "id": 9,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "762575092"
+        }
+      ]
     },
     {
       "street": "Bergsundsgatan",
@@ -208,7 +222,47 @@
         "email": "albinbjerhem@gmail.com",
         "phone": "0736821790"
       },
-      "id": 10
+      "id": 10,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "0736821790"
+        },
+        {
+          "name": "nide",
+          "email": "nisse@gmail.com",
+          "phone": "0736982171"
+        }
+      ]
+    },
+    {
+      "street": "dsdsadsa",
+      "houseNumber": "15",
+      "city": "Gamla stan",
+      "zipCode": "12345",
+      "typeOfProperty": "Radhus",
+      "roomAmount": "1",
+      "area": 1134,
+      "creationYear": "2017",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "al bv",
+        "email": "dsa@gmail.com",
+        "phone": "1234567890"
+      },
+      "id": 11,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "0736821790"
+        }
+      ]
     }
   ],
   "Users": [
