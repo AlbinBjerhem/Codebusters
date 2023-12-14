@@ -1,25 +1,45 @@
 {
   "bostad": [
     {
-      "street": "blabla gatan",
-      "houseNumber": "45",
-      "city": "",
+      "street": "Hejgatandsadsadsa",
+      "houseNumber": "152",
+      "city": "Hjorthagen",
       "zipCode": "12345",
-      "typeOfProperty": "Lägenhet",
-      "roomAmount": "1",
-      "area": "",
-      "creationYear": "",
+      "typeOfProperty": "Villa",
+      "roomAmount": "5.5",
+      "area": 15,
+      "creationYear": "2020",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin B",
+        "email": "albinb@gmail.com",
+        "phone": "0736821790"
+      },
       "id": 1
     },
     {
-      "street": "hejhej gatan",
-      "houseNumber": "444",
-      "city": "",
+      "street": "Hejgatdsadsadsaan",
+      "houseNumber": "153",
+      "city": "Hjorthagen",
       "zipCode": "12345",
-      "typeOfProperty": "Lägenhet",
-      "roomAmount": "1",
-      "area": "",
-      "creationYear": "",
+      "typeOfProperty": "Villa",
+      "roomAmount": "5.5",
+      "area": 15,
+      "creationYear": "2020",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin B",
+        "email": "albinb@gmail.com",
+        "phone": "0736821790"
+      },
       "id": 2
     },
     {
@@ -168,6 +188,27 @@
         "phone": "1234567890"
       },
       "id": 9
+    },
+    {
+      "street": "Bergsundsgatan",
+      "houseNumber": "16",
+      "city": "Södermalm",
+      "zipCode": "11737",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "1.5",
+      "area": 43,
+      "creationYear": "1936",
+      "elevator": "Ja",
+      "parking": "Nej",
+      "yard": "Nej",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin Bjerhem",
+        "email": "albinbjerhem@gmail.com",
+        "phone": "0736821790"
+      },
+      "id": 10
     }
   ],
   "Users": [

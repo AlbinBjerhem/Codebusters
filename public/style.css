@@ -318,3 +318,31 @@ button {
   padding: 10px 20px;
   /* Add padding to the button */
 }
+
+/* styles.css (or your stylesheet) */
+
+
+
+.property {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.property.selected {
+  transform: scaleY(1.2);
+  /* Increase the height of the selected item */
+  z-index: 1;
+  /* Bring the selected item to the foreground */
+}
+
+.details {
+  display: none;
+}
+
+.property.selected .details {
+  display: block;
+  /* Show details section when the property is selected */
+}
