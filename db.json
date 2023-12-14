@@ -1,26 +1,268 @@
 {
   "bostad": [
     {
-      "street": "blabla gatan",
-      "houseNumber": "45",
-      "city": "",
+      "street": "Hejgatandsadsadsa",
+      "houseNumber": "152",
+      "city": "Hjorthagen",
       "zipCode": "12345",
-      "typeOfProperty": "Lägenhet",
-      "roomAmount": "1",
-      "area": "",
-      "creationYear": "",
-      "id": 1
+      "typeOfProperty": "Villa",
+      "roomAmount": "5.5",
+      "area": 15,
+      "creationYear": "2020",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin Bjerhem",
+        "email": "albinbjerhem@gmail.com",
+        "phone": "0736821790"
+      },
+      "id": 1,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "0736821790"
+        }
+      ]
     },
     {
-      "street": "hejhej gatan",
-      "houseNumber": "444",
-      "city": "",
+      "street": "Hejgatdsadsadsaan",
+      "houseNumber": "153",
+      "city": "Hjorthagen",
+      "zipCode": "12345",
+      "typeOfProperty": "Villa",
+      "roomAmount": "5.5",
+      "area": 15,
+      "creationYear": "2020",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin B",
+        "email": "albinb@gmail.com",
+        "phone": "0736821790"
+      },
+      "id": 2
+    },
+    {
+      "street": "Hejgatan",
+      "houseNumber": "15",
+      "city": "Hjorthagen",
+      "zipCode": "12345",
+      "typeOfProperty": "Villa",
+      "roomAmount": "5.5",
+      "area": 15,
+      "creationYear": "2020",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin B",
+        "email": "albinb@gmail.com",
+        "phone": "0736821790"
+      },
+      "id": 3
+    },
+    {
+      "street": "l",
+      "houseNumber": "l",
+      "city": "Lilla Essingen",
       "zipCode": "12345",
       "typeOfProperty": "Lägenhet",
+      "roomAmount": "3",
+      "area": 45,
+      "creationYear": "2012",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "g j",
+        "email": "kira@hf.com",
+        "phone": "1234567890"
+      },
+      "id": 4
+    },
+    {
+      "street": "l",
+      "houseNumber": "l",
+      "city": "Gamla stan",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "2.5",
+      "area": 98,
+      "creationYear": "2023",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "ds sa",
+        "email": "kd@gfd.com",
+        "phone": "1234567890"
+      },
+      "id": 5
+    },
+    {
+      "street": "g",
+      "houseNumber": "f",
+      "city": "Lilla Essingen",
+      "zipCode": "12345",
+      "typeOfProperty": "Radhus",
+      "roomAmount": "3",
+      "area": 56,
+      "creationYear": "2007",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Nej",
+      "attic": "Ja",
+      "contact": {
+        "name": "s f",
+        "email": "gff@fg.co",
+        "phone": "1234567890"
+      },
+      "id": 6
+    },
+    {
+      "street": "gh",
+      "houseNumber": "g",
+      "city": "Gärdet",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "6",
+      "area": 78,
+      "creationYear": "2009",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "k k",
+        "email": "ki@fd.com",
+        "phone": "1234567890"
+      },
+      "id": 7
+    },
+    {
+      "street": "l",
+      "houseNumber": "l",
+      "city": "Gärdet",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "4",
+      "area": 89,
+      "creationYear": "2010",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "k l",
+        "email": "ki@gf.com",
+        "phone": "1234567890"
+      },
+      "id": 8
+    },
+    {
+      "street": "k",
+      "houseNumber": "k",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Radhus",
+      "roomAmount": "3",
+      "area": 19,
+      "creationYear": "2011",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Nej",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "d s",
+        "email": "pok@gd.com",
+        "phone": "1234567890"
+      },
+      "id": 9,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "762575092"
+        }
+      ]
+    },
+    {
+      "street": "Bergsundsgatan",
+      "houseNumber": "16",
+      "city": "Södermalm",
+      "zipCode": "11737",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "1.5",
+      "area": 43,
+      "creationYear": "1936",
+      "elevator": "Ja",
+      "parking": "Nej",
+      "yard": "Nej",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Albin Bjerhem",
+        "email": "albinbjerhem@gmail.com",
+        "phone": "0736821790"
+      },
+      "id": 10,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "0736821790"
+        },
+        {
+          "name": "nide",
+          "email": "nisse@gmail.com",
+          "phone": "0736982171"
+        }
+      ]
+    },
+    {
+      "street": "dsdsadsa",
+      "houseNumber": "15",
+      "city": "Gamla stan",
+      "zipCode": "12345",
+      "typeOfProperty": "Radhus",
       "roomAmount": "1",
-      "area": "",
-      "creationYear": "",
-      "id": 2
+      "area": 1134,
+      "creationYear": "2017",
+      "elevator": "Ja",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "al bv",
+        "email": "dsa@gmail.com",
+        "phone": "1234567890"
+      },
+      "id": 11,
+      "interests": [
+        {
+          "name": "Albin Bjerhem",
+          "email": "albinbjerhem@gmail.com",
+          "phone": "0736821790"
+        }
+      ]
     }
   ],
   "Users": [
@@ -28,8 +270,7 @@
       "username": "admin",
       "password": "admin",
       "loggedIn": false,
-      "id":1
+      "id": 1
     }
-  ],
-  "Test": []
+  ]
 }

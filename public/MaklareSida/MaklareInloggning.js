@@ -1,13 +1,13 @@
 // ------- Karls Kod--------
 
 //Import
-import { getAllBostader } from "../servertest.js"
-import { getUsers } from "../servertest.js";
+import { getAllBostader } from "./servertest.js"
+import { getUsers } from "./servertest.js";
 
 
-const tempUsers = getUsers();
+const tempUsers = await getUsers();
 
-const mainList = getAllBostader();
+const mainList = await getAllBostader();
 sortLists(mainList);
 
 const tempHousesForSale = [
@@ -156,7 +156,7 @@ sectionLoggedIn.appendChild(sellPropertiesTable);
 sectionLoggedIn.appendChild(logOutForm);
 document.body.appendChild(sectionLoggedIn);
 
-document.querySelector("#logOut").addEventListener("submit",userLogOut)
+document.querySelector("#logOut").addEventListener("submit", userLogOut)
 sectionLoggedIn.style.display = "none";
 
 // function för att updatera Selector och tabller, kommer behöva anpassas för JSON
@@ -178,7 +178,7 @@ function UpdateTables() {
   for (let suggested of tempHousesSuggested) {
     const suggestedRow = document.createElement("tr");
     const suggestedAdress = document.createElement("td");
-     const suggestedInfo = document.createElement("td");
+    const suggestedInfo = document.createElement("td");
 
     suggestedAdress.innerText = suggested.Address;
     suggestedInfo.innerText = "placeholder";
@@ -201,7 +201,7 @@ function UpdateTables() {
 }
 
 //Login Function
-function userLogin(event){
+function userLogin(event) {
   event.preventDefault();
   const inputUsername = document.getElementById("usernameInput").value;
   const inputPassword = document.getElementById("passwordInput").value;
