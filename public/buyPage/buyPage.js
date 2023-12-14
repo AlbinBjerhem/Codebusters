@@ -191,19 +191,55 @@ function applyFilter(event) {
 }
 //updatera innehållet
 function UpdateTable(list) {
-  let newtFTBody = document.createElement("thead")
-  for (let house of list) {
-    const filteredRow = document.createElement("tr");
-    const filterAdress = document.createElement("td");   
+  list.forEach(property => {
+    const propertyElement = document.createElement('div');
+    propertyElement.classList.add('property');
+    propertyElement.innerHTML = `<p>${property.street}, ${property.houseNumber}, ${property.city}, ${property.zipCode}</p>`;
 
-    filterAdress.innerText = house.adress;
-    
-    filteredRow.appendChild(filterAdress);    
-    newtFTBody.appendChild(filteredRow);
-  }
-  console.log("table updated");
-  tableFilterTable.replaceChild(newtFTBody, tFTBody)
-  tFTBody = newtFTBody;
+    const detailsElement = document.createElement('div');
+    detailsElement.classList.add('details');
+    detailsElement.innerHTML = `
+        <div class="property-details">
+          <p>Typ av bostad: ${property.typeOfProperty}</p>
+          <p>Antal rum: ${property.roomAmount}</p>
+          <p>Byggår: ${property.creationYear}</p>
+          <p>Hiss: ${property.elevator}</p>
+        </div>
+        <div class="property-details">
+          <p>Parkering: ${property.parking}</p>
+          <p>Innegård: ${property.yard}</p>
+          <p>Förråd: ${property.storage}</p>
+          <p>Vind: ${property.attic}</p>
+        </div>
+      `;
+    propertyElement.appendChild(detailsElement);
+
+    const interestButton = document.createElement('button');
+    interestButton.textContent = 'Intresseanmälan';
+    interestButton.addEventListener('click', () => {
+      showInterestForm(property);
+    });
+
+    interestButton.style.display = 'none';
+
+    propertyElement.appendChild(interestButton);
+
+    propertyElement.addEventListener('click', () => {
+      if (currentSelectedProperty) {
+        currentSelectedProperty.classList.remove('selected');
+
+        currentSelectedProperty.querySelector('button').style.display = 'none';
+      }
+
+      propertyElement.classList.toggle('selected');
+
+      propertyElement.querySelector('button').style.display = 'block';
+
+      currentSelectedProperty = propertyElement;
+    });
+
+    appContainer.appendChild(propertyElement);
+  });
 }
 
 function resetList() {
