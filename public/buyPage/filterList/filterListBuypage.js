@@ -50,7 +50,7 @@ export default function filterList() {
   filterChbx5.name = "Attic Storage Access";
   filterChbx5.value = "AtticStorage";
   const filterSubmit = document.createElement("input");
-  filterSubmit.type ="submit"
+  filterSubmit.type = "submit"
   filterSubmit.value = "Filter List"
 
   const tableFilterTable = document.createElement("table");
@@ -98,8 +98,7 @@ export default function filterList() {
   function applyFilter(event) {
     event.preventDefault();
     let filteredList = listToFilter
-    for (let i = 0; i < filteredList.length; i++)
-    {
+    for (let i = 0; i < filteredList.length; i++) {
       if (filterChbx1.checked == true && filteredList[i].elevator == false) {
         filteredList.splice(i, 1);
         console.log("filtered list");
@@ -159,8 +158,7 @@ export default function filterList() {
   
   document.body.appendChild(sectionFilterCriteria);
 
-  sectionFilterCriteria.addEventListener("submit", applyFilter)  
-  return sectionFilterCriteria
+  sectionFilterCriteria.addEventListener("submit", applyFilter)
 }
 
 function changeElementVisibility(elementID) {
