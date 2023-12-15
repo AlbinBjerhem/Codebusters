@@ -2,6 +2,12 @@ Gruppmedlemmar:
 
 Karl Loe: AccidentByDragon
 
+
+Instruktioner:
+Login: 
+  Username: admin
+  password: admin
+
 Bugs/glitches
 1. Sellpage behöver Uppdateras i browser för att visas
 2. Filter functionen är inte helt implementerade, den kan ses i dess funktionella form i branchen: buyPage/filterList
