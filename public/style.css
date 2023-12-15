@@ -27,7 +27,18 @@ body {
 
 .footer {
   padding: 50px;
-  margin-top: 3%;
+  margin-top: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
 }
 
 .f1 {
