@@ -9,23 +9,16 @@ export default function setupLogInPage() {
 
 
 
-  // Assume getUsers() returns a promise
   const tempUsersPromise = getUsers();
-
-  // Use async/await to wait for the promise to resolve
   const initializeLoginPage = async () => {
     try {
       const tempUsers = await tempUsersPromise;
-      // Now you can use tempUsers as an array
-
-      // Rest of your code that relies on tempUsers
 
     } catch (error) {
       console.error('Error fetching users:', error);
     }
   };
 
-  // Call the async function
   initializeLoginPage();
 
 
@@ -119,10 +112,8 @@ export default function setupLogInPage() {
     const inputPassword = document.getElementById("passwordInput").value;
 
     try {
-      // Wait for the getUsers() promise to resolve
       const tempUsers = await tempUsersPromise;
 
-      // Check if the user exists and the password is correct
       const loginCorrect = tempUsers.some(tempUser =>
         tempUser.password == inputPassword && tempUser.username == inputUsername);
 
@@ -133,7 +124,6 @@ export default function setupLogInPage() {
         loggedIn = true;
         fetchDataAndRenderBuyPage();
       } else {
-        // Handle incorrect login
         console.log('Incorrect username or password');
       }
     } catch (error) {
@@ -208,14 +198,11 @@ const renderBuyPage = (bostadData) => {
       bostadData.forEach(property => {
         const propertyElement = document.createElement('div');
         propertyElement.classList.add('property');
-
-        // Initial display (address)
+        propertyElement.id = `property-${property.id}`;
         const addressElement = document.createElement('div');
         addressElement.classList.add('address');
         addressElement.innerHTML = `<p>${property.street}, ${property.houseNumber}, ${property.city}, ${property.zipCode}</p>`;
         propertyElement.appendChild(addressElement);
-
-        // Property details initially hidden
         const detailsElement = document.createElement('div');
         detailsElement.classList.add('details');
         detailsElement.innerHTML = `
@@ -232,10 +219,9 @@ const renderBuyPage = (bostadData) => {
             <p>Vind: ${property.attic}</p>
           </div>
         `;
-        detailsElement.style.display = 'none'; // Initially hide the details
+        detailsElement.style.display = 'none';
         propertyElement.appendChild(detailsElement);
 
-        // Additional details initially hidden
         const additionalDetailsElement = document.createElement('div');
         additionalDetailsElement.classList.add('additional-details');
         additionalDetailsElement.innerHTML = `
@@ -256,31 +242,34 @@ const renderBuyPage = (bostadData) => {
         additionalDetailsElement.style.display = 'none';
         propertyElement.appendChild(additionalDetailsElement);
 
-        // Add an event listener for each property
         const lanseraButton = additionalDetailsElement.querySelector('.lanseraButton');
-        lanseraButton.addEventListener('click', () => {
+        lanseraButton.addEventListener('click', async () => {
           const selectedPris = document.getElementById('pris').value;
           const selectedMaklare = document.getElementById('maklare').value;
 
-          // Update the reference to the specific property object
-          updatePropertyDetails(property, selectedPris, selectedMaklare);
+          try {
+            await updatePropertyDetails(property, selectedPris, selectedMaklare);
 
-          // Optional: Display the updated information
-          addressElement.innerHTML = `<p>${property.street}, ${property.houseNumber}, ${property.city}, ${property.zipCode}</p>`;
-          detailsElement.innerHTML = `
-            <div class="property-details">
-              <p>Typ av bostad: ${property.typeOfProperty}</p>
-              <p>Antal rum: ${property.roomAmount}</p>
-              <p>Byggår: ${property.creationYear}</p>
-              <p>Hiss: ${property.elevator}</p>
-            </div>
-            <div class="property-details">
-              <p>Parkering: ${property.parking}</p>
-              <p>Innegård: ${property.yard}</p>
-              <p>Förråd: ${property.storage}</p>
-              <p>Vind: ${property.attic}</p>
-            </div>
-          `;
+            addressElement.innerHTML = `<p>${property.street}, ${property.houseNumber}, ${property.city}, ${property.zipCode}</p>`;
+            detailsElement.innerHTML = `
+      <div class="property-details">
+        <p>Typ av bostad: ${property.typeOfProperty}</p>
+        <p>Antal rum: ${property.roomAmount}</p>
+        <p>Byggår: ${property.creationYear}</p>
+        <p>Hiss: ${property.elevator}</p>
+      </div>
+      <div class="property-details">
+        <p>Parkering: ${property.parking}</p>
+        <p>Innegård: ${property.yard}</p>
+        <p>Förråd: ${property.storage}</p>
+        <p>Vind: ${property.attic}</p>
+        <p>Pris: ${property.pris}</p> <!-- Display the Pris -->
+        <p>Mäklare: ${property.maklare}</p> <!-- Display the Mäklare -->
+      </div>
+    `;
+          } catch (error) {
+            console.error('Error updating property:', error);
+          }
         });
 
         propertyElement.addEventListener('click', () => {
@@ -307,17 +296,53 @@ const renderBuyPage = (bostadData) => {
     }
   } else {
     appContainer.innerHTML = '<p>User is not logged in. Redirect or show login page.</p>';
-    // You can redirect the user to the login page or handle it in another way.
   }
 };
 
+function updatePropertyDetails(property, selectedPris, selectedMaklare) {
+  property.pris = selectedPris;
+  property.maklare = selectedMaklare;
 
+  console.log(`Bostad launched with Pris: ${selectedPris}, Mäklare: ${selectedMaklare}`);
 
+  fetch(`http://localhost:3000/bostad/${property.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(property),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Update successful:', data);
 
+      const propertyElement = document.querySelector(`#property-${property.id}`);
 
+      if (propertyElement) {
+        const detailsElement = propertyElement.querySelector('.details');
 
+        if (detailsElement) {
+          detailsElement.innerHTML = `
+            <!-- ... Your HTML ... -->
+          `;
 
-
+          propertyElement.style.backgroundColor = 'lightgreen';
+        } else {
+          console.error(`detailsElement is null for property with id ${property.id}. Element might not be found.`);
+        }
+      } else {
+        console.error(`propertyElement is null for property with id ${property.id}. Element might not be found.`);
+      }
+    })
+    .catch(error => {
+      console.error('Error updating property:', error);
+    });
+}
 
 
 

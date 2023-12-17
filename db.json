@@ -26,7 +26,9 @@
           "email": "albinbjerhem@gmail.com",
           "phone": "0736821790"
         }
-      ]
+      ],
+      "pris": "1235",
+      "maklare": "Albin Bjerhem"
     },
     {
       "street": "Hejgatdsadsadsaan",
@@ -47,7 +49,9 @@
         "email": "albinb@gmail.com",
         "phone": "0736821790"
       },
-      "id": 2
+      "id": 2,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "Hejgatan",
@@ -68,7 +72,9 @@
         "email": "albinb@gmail.com",
         "phone": "0736821790"
       },
-      "id": 3
+      "id": 3,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "l",
@@ -110,7 +116,9 @@
         "email": "kd@gfd.com",
         "phone": "1234567890"
       },
-      "id": 5
+      "id": 5,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "g",
@@ -152,7 +160,9 @@
         "email": "ki@fd.com",
         "phone": "1234567890"
       },
-      "id": 7
+      "id": 7,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "l",
@@ -173,7 +183,9 @@
         "email": "ki@gf.com",
         "phone": "1234567890"
       },
-      "id": 8
+      "id": 8,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "k",
@@ -234,7 +246,9 @@
           "email": "nisse@gmail.com",
           "phone": "0736982171"
         }
-      ]
+      ],
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "dsdsadsa",
@@ -262,7 +276,9 @@
           "email": "albinbjerhem@gmail.com",
           "phone": "0736821790"
         }
-      ]
+      ],
+      "pris": "",
+      "maklare": ""
     }
   ],
   "Users": [
