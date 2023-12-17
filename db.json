@@ -216,39 +216,9 @@
       ]
     },
     {
-      "street": "Bergsundsgatan",
-      "houseNumber": "16",
-      "city": "Södermalm",
-      "zipCode": "11737",
-      "typeOfProperty": "Lägenhet",
-      "roomAmount": "1.5",
-      "area": 43,
-      "creationYear": "1936",
-      "elevator": "Ja",
-      "parking": "Nej",
-      "yard": "Nej",
-      "storage": "Ja",
-      "attic": "Ja",
-      "contact": {
-        "name": "Albin Bjerhem",
-        "email": "albinbjerhem@gmail.com",
-        "phone": "0736821790"
-      },
-      "id": 10,
-      "interests": [
-        {
-          "name": "Albin Bjerhem",
-          "email": "albinbjerhem@gmail.com",
-          "phone": "0736821790"
-        },
-        {
-          "name": "nide",
-          "email": "nisse@gmail.com",
-          "phone": "0736982171"
-        }
-      ],
       "pris": "",
-      "maklare": ""
+      "maklare": "",
+      "id": 10
     },
     {
       "street": "dsdsadsa",
