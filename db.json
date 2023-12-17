@@ -26,7 +26,9 @@
           "email": "albinbjerhem@gmail.com",
           "phone": "0736821790"
         }
-      ]
+      ],
+      "pris": "1235",
+      "maklare": "Albin Bjerhem"
     },
     {
       "street": "Hejgatdsadsadsaan",
@@ -47,7 +49,9 @@
         "email": "albinb@gmail.com",
         "phone": "0736821790"
       },
-      "id": 2
+      "id": 2,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "Hejgatan",
@@ -68,7 +72,9 @@
         "email": "albinb@gmail.com",
         "phone": "0736821790"
       },
-      "id": 3
+      "id": 3,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "l",
@@ -110,7 +116,9 @@
         "email": "kd@gfd.com",
         "phone": "1234567890"
       },
-      "id": 5
+      "id": 5,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "g",
@@ -152,7 +160,9 @@
         "email": "ki@fd.com",
         "phone": "1234567890"
       },
-      "id": 7
+      "id": 7,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "l",
@@ -173,7 +183,9 @@
         "email": "ki@gf.com",
         "phone": "1234567890"
       },
-      "id": 8
+      "id": 8,
+      "pris": "",
+      "maklare": ""
     },
     {
       "street": "k",
@@ -204,37 +216,9 @@
       ]
     },
     {
-      "street": "Bergsundsgatan",
-      "houseNumber": "16",
-      "city": "Södermalm",
-      "zipCode": "11737",
-      "typeOfProperty": "Lägenhet",
-      "roomAmount": "1.5",
-      "area": 43,
-      "creationYear": "1936",
-      "elevator": "Ja",
-      "parking": "Nej",
-      "yard": "Nej",
-      "storage": "Ja",
-      "attic": "Ja",
-      "contact": {
-        "name": "Albin Bjerhem",
-        "email": "albinbjerhem@gmail.com",
-        "phone": "0736821790"
-      },
-      "id": 10,
-      "interests": [
-        {
-          "name": "Albin Bjerhem",
-          "email": "albinbjerhem@gmail.com",
-          "phone": "0736821790"
-        },
-        {
-          "name": "nide",
-          "email": "nisse@gmail.com",
-          "phone": "0736982171"
-        }
-      ]
+      "pris": "",
+      "maklare": "",
+      "id": 10
     },
     {
       "street": "dsdsadsa",
@@ -262,14 +246,351 @@
           "email": "albinbjerhem@gmail.com",
           "phone": "0736821790"
         }
-      ]
+      ],
+      "pris": "",
+      "maklare": ""
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 12
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 13
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 14
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 15
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 16
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 17
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 18
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 19
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 20
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 21
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 22
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 23
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 24
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 25
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 26
+    },
+    {
+      "street": "hejhej",
+      "houseNumber": "12",
+      "city": "Fredhäll",
+      "zipCode": "12345",
+      "typeOfProperty": "Lägenhet",
+      "roomAmount": "5.5",
+      "area": 1234,
+      "creationYear": "2022",
+      "elevator": "Nej",
+      "parking": "Ja",
+      "yard": "Ja",
+      "storage": "Ja",
+      "attic": "Ja",
+      "contact": {
+        "name": "Al Bi",
+        "email": "dsa@gmail.com",
+        "phone": "0736851236"
+      },
+      "id": 27
     }
   ],
   "Users": [
     {
       "username": "admin",
       "password": "admin",
-      "loggedIn": false,
       "id": 1
     }
   ]

@@ -2,29 +2,23 @@
 import { getAllBostader } from "../servertest.js"
 import { getUsers } from "../servertest.js";
 
-
+let loggedIn = false;
+let currentSelectedProperty = null;
 
 export default function setupLogInPage() {
 
 
 
-  // Assume getUsers() returns a promise
   const tempUsersPromise = getUsers();
-
-  // Use async/await to wait for the promise to resolve
   const initializeLoginPage = async () => {
     try {
       const tempUsers = await tempUsersPromise;
-      // Now you can use tempUsers as an array
-
-      // Rest of your code that relies on tempUsers
 
     } catch (error) {
       console.error('Error fetching users:', error);
     }
   };
 
-  // Call the async function
   initializeLoginPage();
 
 
@@ -103,123 +97,13 @@ export default function setupLogInPage() {
   unclaimedPropertiesTable.appendChild(uPTHead);
   unclaimedPropertiesTable.appendChild(uPTBody);
 
-  // Föreslagna Objekt
-  for (let suggested of tempHousesSuggested) {
-    const suggestedRow = document.createElement("tr");
-    const suggestedAdress = document.createElement("td");
-    const suggestedInfo = document.createElement("td");
-
-    suggestedAdress.innerText = suggested.Address;
-    suggestedInfo.innerText = "placeholder";
-
-    suggestedRow.appendChild(suggestedAdress);
-    suggestedRow.appendChild(suggestedInfo);
-    uPTBody.appendChild(suggestedRow);
-
-  }
-
-
-  //arbeta med sälj lägenheter/object här
-  const sellPropertiesTable = document.createElement("table");
-  const sPTHead = document.createElement("thead");
-  const sPTBody = document.createElement("thead");
-  const sPTRowHead = document.createElement("tr");
-  const sPThAdress = document.createElement("th");
-  const sPTAgent = document.createElement("th");
-
-  sPThAdress.innerText = "Property Adress";
-  sPTAgent.innerText = "Current Agent";
-
-  sPTRowHead.appendChild(sPThAdress);
-  sPTRowHead.appendChild(sPTAgent);
-  sPTHead.appendChild(sPTRowHead);
-  sellPropertiesTable.appendChild(sPTHead);
-  sellPropertiesTable.appendChild(sPTBody);
-
-  //Objekt som Säljs
-  for (let house of tempHousesForSale) {
-    const houseRow = document.createElement("tr");
-    const houseAdress = document.createElement("td");
-    const houseAgent = document.createElement("td");
-
-    houseAdress.innerText = house.Address;
-    houseAgent.innerText = house.Agent;
-
-    houseRow.appendChild(houseAdress);
-    houseRow.appendChild(houseAgent);
-    sPTBody.appendChild(houseRow);
-  }
-
-  const suggestedSelectorForm = document.createElement("form");
-  const suggestedSelector = document.createElement("select");
-  suggestedSelector.id = "selectorSuggest"
-  tempHousesSuggested.forEach(house => {
-    const option = document.createElement("option");
-    option.value = house.Address;
-    option.textContent = house.Address;
-    suggestedSelector.appendChild(option)
-  })
-  const acceptSuggestion = document.createElement("input")
-  acceptSuggestion.type = "submit";
-  acceptSuggestion.id = "acceptButton";
-  acceptSuggestion.value = "Accept Suggestion"
-
-  suggestedSelectorForm.appendChild(suggestedSelector);
-  suggestedSelectorForm.appendChild(acceptSuggestion);
-
-  suggestedSelectorForm.addEventListener("submit", acceptSuggestedHouse)
 
   logOutForm.appendChild(logOut)
-  sectionLoggedIn.appendChild(sectionLoggedInh2);
-  sectionLoggedIn.appendChild(unclaimedPropertiesTable);
-  sectionLoggedIn.appendChild(suggestedSelectorForm);
-  sectionLoggedIn.appendChild(sellPropertiesTable);
   sectionLoggedIn.appendChild(logOutForm);
   document.body.appendChild(sectionLoggedIn);
 
   document.querySelector("#logOut").addEventListener("submit", userLogOut)
   sectionLoggedIn.style.display = "none";
-
-  // function för att updatera Selector och tabller, kommer behöva anpassas för JSON
-  function UpdateTables() {
-    let newSPTBody = document.createElement("thead")
-    let newUPTBody = document.createElement("thead")
-    for (let house of tempHousesForSale) {
-      const houseRow = document.createElement("tr");
-      const houseAdress = document.createElement("td");
-      const houseAgent = document.createElement("td");
-
-      houseAdress.innerText = house.Address;
-      houseAgent.innerText = house.Agent;
-
-      houseRow.appendChild(houseAdress);
-      houseRow.appendChild(houseAgent);
-      newSPTBody.appendChild(houseRow);
-    }
-    for (let suggested of tempHousesSuggested) {
-      const suggestedRow = document.createElement("tr");
-      const suggestedAdress = document.createElement("td");
-      const suggestedInfo = document.createElement("td");
-
-      suggestedAdress.innerText = suggested.Address;
-      suggestedInfo.innerText = "placeholder";
-
-      suggestedRow.appendChild(suggestedAdress);
-      suggestedRow.appendChild(suggestedInfo);
-      newUPTBody.appendChild(suggestedRow);
-    }
-    const newSuggestedSelector = document.createElement("select");
-    newSuggestedSelector.id = "selectorSuggest"
-    tempHousesSuggested.forEach(house => {
-      const option = document.createElement("option");
-      option.value = house.Address;
-      option.textContent = house.Address;
-      newSuggestedSelector.appendChild(option)
-    })
-    suggestedSelectorForm.replaceChild(newSuggestedSelector, suggestedSelector)
-    unclaimedPropertiesTable.replaceChild(newUPTBody, uPTBody)
-    sellPropertiesTable.replaceChild(newSPTBody, sPTBody)
-  }
 
   //Login Function
   async function userLogin(event) {
@@ -228,10 +112,8 @@ export default function setupLogInPage() {
     const inputPassword = document.getElementById("passwordInput").value;
 
     try {
-      // Wait for the getUsers() promise to resolve
       const tempUsers = await tempUsersPromise;
 
-      // Check if the user exists and the password is correct
       const loginCorrect = tempUsers.some(tempUser =>
         tempUser.password == inputPassword && tempUser.username == inputUsername);
 
@@ -239,8 +121,9 @@ export default function setupLogInPage() {
         sectionLoggedIn.style.display = "block";
         sectionLogin.style.display = "none";
         currentUser = inputUsername;
+        loggedIn = true;
+        fetchDataAndRenderBuyPage();
       } else {
-        // Handle incorrect login
         console.log('Incorrect username or password');
       }
     } catch (error) {
@@ -249,17 +132,17 @@ export default function setupLogInPage() {
   }
 
   // accept Suggestion
-  function acceptSuggestedHouse(event) {
-    event.preventDefault();
-    const tempSuggestion = suggestedSelector.options[suggestedSelector.selectedIndex].value;
-    const claimedProperty = findPropety(tempSuggestion);
-    claimedProperty.Agent = currentUser;
-    tempHousesForSale.push(claimedProperty);
-    tempHousesSuggested.splice(suggestedSelector.selectedIndex, 1)
-    console.log("did something")
-    UpdateTables();
-    /*Behöver göra om hur tabellen skapas så att den kan laddas om här  */
-  }
+  // function acceptSuggestedHouse(event) {
+  //   event.preventDefault();
+  //   const tempSuggestion = suggestedSelector.options[suggestedSelector.selectedIndex].value;
+  //   const claimedProperty = findPropety(tempSuggestion);
+  //   claimedProperty.Agent = currentUser;
+  //   tempHousesForSale.push(claimedProperty);
+  //   tempHousesSuggested.splice(suggestedSelector.selectedIndex, 1)
+  //   console.log("did something")
+  //   UpdateTables();
+  //   /*Behöver göra om hur tabellen skapas så att den kan laddas om här  */
+  // }
 
   function findPropety(searchAdress) {
     for (let property of tempHousesSuggested) {
@@ -293,4 +176,297 @@ export default function setupLogInPage() {
   return sectionLogin;
 }
 
+const fetchDataAndRenderBuyPage = async (highlightedPropertyId) => {
+  try {
+    const response = await fetch('http://localhost:3000/bostad');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+    }
+    const data = await response.json();
+    const bostadData = data;
+    renderBuyPage(bostadData, highlightedPropertyId);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
 
+const renderBuyPage = (bostadData, highlightedPropertyId) => {
+  const appContainer = document.getElementById('myApp');
+  if (loggedIn == true) {
+    appContainer.innerHTML = '<h1>Våra listade bostäder för försäljning!</h1>';
+    if (bostadData && Array.isArray(bostadData)) {
+      bostadData.forEach(property => {
+        const propertyElement = document.createElement('div');
+        propertyElement.classList.add('property');
+        propertyElement.id = `property-${property.id}`;
+        const addressElement = document.createElement('div');
+        addressElement.classList.add('address');
+        addressElement.innerHTML = `<p>${property.street}, ${property.houseNumber}, ${property.city}, ${property.zipCode}</p>`;
+        propertyElement.appendChild(addressElement);
+        const detailsElement = document.createElement('div');
+        detailsElement.classList.add('details');
+        detailsElement.innerHTML = `
+          <div class="property-details">
+            <p>Typ av bostad: ${property.typeOfProperty}</p>
+            <p>Antal rum: ${property.roomAmount}</p>
+            <p>Byggår: ${property.creationYear}</p>
+            <p>Hiss: ${property.elevator}</p>
+          </div>
+          <div class="property-details">
+            <p>Parkering: ${property.parking}</p>
+            <p>Innegård: ${property.yard}</p>
+            <p>Förråd: ${property.storage}</p>
+            <p>Vind: ${property.attic}</p>
+          </div>
+        `;
+        detailsElement.style.display = 'none';
+        propertyElement.appendChild(detailsElement);
+
+        const additionalDetailsElement = document.createElement('div');
+        additionalDetailsElement.classList.add('additional-details');
+        additionalDetailsElement.innerHTML = `
+          <label for="pris">Pris:</label>
+          <input type="text" id="pris" name="pris" placeholder="Enter Pris">
+
+          <label for="maklare">Mäklare:</label>
+          <select id="maklare" name="maklare">
+            <option value="">Select Mäklare</option>
+            <option value="Albin Bjerhem">Albin Bjerhem</option>
+            <option value="Alexandra Filipsson">Alexandra Filipsson</option>
+            <option value="Karl Loe">Karl Loe</option>
+            <option value="Kira Popko">Kira Popko</option>
+          </select>
+
+          <button class="lanseraButton">Lansera bostad</button>
+        `;
+        additionalDetailsElement.style.display = 'none';
+        propertyElement.appendChild(additionalDetailsElement);
+
+        const lanseraButton = additionalDetailsElement.querySelector('.lanseraButton');
+        lanseraButton.addEventListener('click', async () => {
+          const selectedPris = document.getElementById('pris').value;
+          const selectedMaklare = document.getElementById('maklare').value;
+
+          try {
+            await updatePropertyDetails(property, selectedPris, selectedMaklare);
+
+            addressElement.innerHTML = `<p>${property.street}, ${property.houseNumber}, ${property.city}, ${property.zipCode}</p>`;
+            detailsElement.innerHTML = `
+              <div class="property-details">
+                <p>Typ av bostad: ${property.typeOfProperty}</p>
+                <p>Antal rum: ${property.roomAmount}</p>
+                <p>Byggår: ${property.creationYear}</p>
+                <p>Hiss: ${property.elevator}</p>
+              </div>
+              <div class="property-details">
+                <p>Parkering: ${property.parking}</p>
+                <p>Innegård: ${property.yard}</p>
+                <p>Förråd: ${property.storage}</p>
+                <p>Vind: ${property.attic}</p>
+                <p>Pris: ${property.pris}</p> <!-- Display the Pris -->
+                <p>Mäklare: ${property.maklare}</p> <!-- Display the Mäklare -->
+              </div>
+            `;
+          } catch (error) {
+            console.error('Error updating property:', error);
+          }
+
+          // Re-fetch data and re-render the buy page, highlighting the updated property
+          await fetchDataAndRenderBuyPage(property.id);
+        });
+
+        propertyElement.addEventListener('click', () => {
+          if (currentSelectedProperty) {
+            currentSelectedProperty.classList.remove('selected');
+            currentSelectedProperty.querySelector('.details').style.display = 'none';
+            currentSelectedProperty.querySelector('.additional-details').style.display = 'none';
+          }
+
+          propertyElement.classList.toggle('selected');
+          const details = propertyElement.querySelector('.details');
+          details.style.display = details.style.display === 'none' ? 'block' : 'none';
+
+          const additionalDetails = propertyElement.querySelector('.additional-details');
+          additionalDetails.style.display = additionalDetails.style.display === 'none' ? 'block' : 'none';
+
+          currentSelectedProperty = propertyElement;
+        });
+
+        if (highlightedPropertyId && property.id === highlightedPropertyId) {
+          propertyElement.style.backgroundColor = 'lightgreen';
+        }
+
+        appContainer.appendChild(propertyElement);
+      });
+    } else {
+      appContainer.innerHTML = '<p>No property data available</p>';
+    }
+  } else {
+    appContainer.innerHTML = '<p>User is not logged in. Redirect or show login page.</p>';
+  }
+};
+
+function updatePropertyDetails(property, selectedPris, selectedMaklare) {
+  property.pris = selectedPris;
+  property.maklare = selectedMaklare;
+
+  console.log(`Bostad launched with Pris: ${selectedPris}, Mäklare: ${selectedMaklare}`);
+
+  fetch(`http://localhost:3000/bostad/${property.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(property),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Update successful:', data);
+
+      const propertyElement = document.querySelector(`#property-${property.id}`);
+
+      if (propertyElement) {
+        const detailsElement = propertyElement.querySelector('.details');
+
+        if (detailsElement) {
+          detailsElement.innerHTML = `
+            <!-- ... Your HTML ... -->
+          `;
+
+          propertyElement.style.backgroundColor = 'lightgreen';
+        } else {
+          console.error(`detailsElement is null for property with id ${property.id}. Element might not be found.`);
+        }
+      } else {
+        console.error(`propertyElement is null for property with id ${property.id}. Element might not be found.`);
+      }
+    })
+    .catch(error => {
+      console.error('Error updating property:', error);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+// // Föreslagna Objekt
+// for (let suggested of tempHousesSuggested) {
+//   const suggestedRow = document.createElement("tr");
+//   const suggestedAdress = document.createElement("td");
+//   const suggestedInfo = document.createElement("td");
+
+//   suggestedAdress.innerText = suggested.Address;
+//   suggestedInfo.innerText = "placeholder";
+
+//   suggestedRow.appendChild(suggestedAdress);
+//   suggestedRow.appendChild(suggestedInfo);
+//   uPTBody.appendChild(suggestedRow);
+
+// }
+
+
+// //arbeta med sälj lägenheter/object här
+// const sellPropertiesTable = document.createElement("table");
+// const sPTHead = document.createElement("thead");
+// const sPTBody = document.createElement("thead");
+// const sPTRowHead = document.createElement("tr");
+// const sPThAdress = document.createElement("th");
+// const sPTAgent = document.createElement("th");
+
+// sPThAdress.innerText = "Property Adress";
+// sPTAgent.innerText = "Current Agent";
+
+// sPTRowHead.appendChild(sPThAdress);
+// sPTRowHead.appendChild(sPTAgent);
+// sPTHead.appendChild(sPTRowHead);
+// sellPropertiesTable.appendChild(sPTHead);
+// sellPropertiesTable.appendChild(sPTBody);
+
+// //Objekt som Säljs
+// for (let house of tempHousesForSale) {
+//   const houseRow = document.createElement("tr");
+//   const houseAdress = document.createElement("td");
+//   const houseAgent = document.createElement("td");
+
+//   houseAdress.innerText = house.Address;
+//   houseAgent.innerText = house.Agent;
+
+//   houseRow.appendChild(houseAdress);
+//   houseRow.appendChild(houseAgent);
+//   sPTBody.appendChild(houseRow);
+// }
+
+// const suggestedSelectorForm = document.createElement("form");
+// const suggestedSelector = document.createElement("select");
+// suggestedSelector.id = "selectorSuggest"
+// tempHousesSuggested.forEach(house => {
+//   const option = document.createElement("option");
+//   option.value = house.Address;
+//   option.textContent = house.Address;
+//   suggestedSelector.appendChild(option)
+// })
+// const acceptSuggestion = document.createElement("input")
+// acceptSuggestion.type = "submit";
+// acceptSuggestion.id = "acceptButton";
+// acceptSuggestion.value = "Accept Suggestion"
+
+// suggestedSelectorForm.appendChild(suggestedSelector);
+// suggestedSelectorForm.appendChild(acceptSuggestion);
+
+// suggestedSelectorForm.addEventListener("submit", acceptSuggestedHouse)
+
+// sectionLoggedIn.appendChild(sectionLoggedInh2);
+// sectionLoggedIn.appendChild(unclaimedPropertiesTable);
+// sectionLoggedIn.appendChild(suggestedSelectorForm);
+// sectionLoggedIn.appendChild(sellPropertiesTable);
+// // function för att updatera Selector och tabller, kommer behöva anpassas för JSON
+// function UpdateTables() {
+//   let newSPTBody = document.createElement("thead")
+//   let newUPTBody = document.createElement("thead")
+//   for (let house of tempHousesForSale) {
+//     const houseRow = document.createElement("tr");
+//     const houseAdress = document.createElement("td");
+//     const houseAgent = document.createElement("td");
+
+//     houseAdress.innerText = house.Address;
+//     houseAgent.innerText = house.Agent;
+
+//     houseRow.appendChild(houseAdress);
+//     houseRow.appendChild(houseAgent);
+//     newSPTBody.appendChild(houseRow);
+//   }
+//   for (let suggested of tempHousesSuggested) {
+//     const suggestedRow = document.createElement("tr");
+//     const suggestedAdress = document.createElement("td");
+//     const suggestedInfo = document.createElement("td");
+
+//     suggestedAdress.innerText = suggested.Address;
+//     suggestedInfo.innerText = "placeholder";
+
+//     suggestedRow.appendChild(suggestedAdress);
+//     suggestedRow.appendChild(suggestedInfo);
+//     newUPTBody.appendChild(suggestedRow);
+//   }
+//   const newSuggestedSelector = document.createElement("select");
+//   newSuggestedSelector.id = "selectorSuggest"
+//   tempHousesSuggested.forEach(house => {
+//     const option = document.createElement("option");
+//     option.value = house.Address;
+//     option.textContent = house.Address;
+//     newSuggestedSelector.appendChild(option)
+//   })
+//   suggestedSelectorForm.replaceChild(newSuggestedSelector, suggestedSelector)
+//   unclaimedPropertiesTable.replaceChild(newUPTBody, uPTBody)
+//   sellPropertiesTable.replaceChild(newSPTBody, sPTBody)
+// }
